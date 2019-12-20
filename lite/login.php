@@ -156,7 +156,7 @@
                         <div class="col">
                         </div>                       
                         <div class="col">
-                            <small id="emailHelp" class="form-text text-muted" style="float:right;">สำหรับนักศึกษา: กรอกรหัสนักศึกษา</small>
+                            <small id="emailHelp" class="form-text text-muted" style="float:right;">สำหรับนักศึกษา: กรุณากรอกรหัสนักศึกษา</small>
                          </div>
                         <div class="col">
                         </div>
