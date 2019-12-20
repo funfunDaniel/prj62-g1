@@ -18,7 +18,6 @@ while($row = mysqli_fetch_array($result)){
                     "dep" => $dep,
                     "aff" => $aff);
 }
-
 // Encoding array in JSON format
 echo json_encode($return_arr);
 ?>
