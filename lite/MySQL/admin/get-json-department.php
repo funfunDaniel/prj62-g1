@@ -13,7 +13,6 @@ while($row = mysqli_fetch_array($result)){
     $id = $row['id'];
     $dep = $row['department'];
     $aff = $row['affiliation'];
-
     $return_arr[] = array("id" => $id,
                     "dep" => $dep,
                     "aff" => $aff);
