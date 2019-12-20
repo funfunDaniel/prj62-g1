@@ -151,7 +151,6 @@
                         <div class="col">
                         </div>
                     </div>
-
                     <div class="row" style="margin-block-start: auto; auto; margin: auto;">
                         <div class="col">
                         </div>                       
