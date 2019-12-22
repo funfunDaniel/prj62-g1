@@ -43,19 +43,22 @@ function checkType(type){
             คำขอ | เข้าร่วมกิจกรรม
         </title>
             <!-- Tell the browser to be responsive to screen width -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="./css/stylesheet1.css">
-        <link rel="stylesheet" href="./css/stylesheet2.css">
-        
-        <script src="showAll.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">	
+    <link rel="stylesheet" href="./css/stylesheet1.css">
+    <link rel="stylesheet" href="./css/stylesheet2.css">
+    <!-- <link rel="stylesheet" href="./css/stylesheet6.css"> -->
+	
+	<script src="showAll.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <script>
             function checkType(type){
@@ -111,7 +114,7 @@ function checkType(type){
                                         <form name="searchForm" method="POST" id="add-act-form" action="check-std-add-activity.php" enctype="multipart/form-data">
                                         <div class="form-group" id="actype">
                                             <span class="input-group-prepend" id="inputGroupPrepend">ประเภทของกิจกรรม</span><br/>
-                                            <select  class="form-control " name="activitytype" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px;border-color:#2E9AFE;" onchange="checkType(this.value)" > 
+                                            <select  class="selectborder " name="activitytype" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px;border-color:#2E9AFE;" onchange="checkType(this.value)" > 
                                                 <option value="none">----- เลือกประเภทกิจกรรม -----</option>
                                                 <option value="university">มหาวิทยาลัย</option>
                                                 <option value="school">สำนักวิชา</option>
@@ -124,15 +127,28 @@ function checkType(type){
 
                                             <span class="input-group-prepend" id="inputGroupPrepend">ชื่อกิจกรรม</span><br/>
                                             <div id="actname">
-                                            <select class="form-control " name="activityname" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> 
+                                            <select class="selectborder " name="activityname" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> 
                                                 <option>-----เลือกกิจกรรม-----</option>
                                             </select>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormContsrolTextarea1">รายละเอียด</label><br/>
-                                            <textarea class="form-control" name="detail" id="detail" rows="5" style="width: 100%;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"></textarea>
+                                            <textarea class="textareaborder" name="detail" id="detail" rows="5" style="width: 100%;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"></textarea>
                                         </div>
+
+                                        <label >ตำแหน่งปัจจุบัน</label><br/>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label>  ละติจูด : </label>
+                                                <input name="location_lat" id="geo_data_lat" type="text" class="form-control " style="width:60%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;">                                        
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label>ลองติจูด : </label>
+                                                <input name="location_long" id="geo_data_long" type="text" class="form-control " style="width:60%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;">                                        
+                                            </div>
+                                        </div>
+                                    <!-- </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlTextarea1">ตำแหน่งปัจจุบัน</label><br/>
                                             <div class="lat-long-input">
@@ -154,7 +170,7 @@ function checkType(type){
                                                 </div>
                                             </div>
 
-                                        </div>
+                                        </div> -->
 
                                         <!-- ดึงข้อมูลตำแหน่งปัจจุบัน -->
                                         <script type="text/javascript">
@@ -172,30 +188,19 @@ function checkType(type){
                                                 alert('เบราเซอร์นี้ไม่รองรับ geolocation');
                                             }
                                         </script>
-
-                                        <!-- <div id="googleMap"></div>
-                                        <script>
-                                        // Initialize and add the map
-                                        function initMap() {
-                                        // The location of Uluru
-                                        var uluru = {lat: -25.344, lng: 131.036};
-                                        // The map, centered at Uluru
-                                        var map = new google.maps.Map(
-                                            document.getElementById('googleMap'), {zoom: 4, center: uluru});
-                                        // The marker, positioned at Uluru
-                                        var marker = new google.maps.Marker({position: uluru, map: map});
-                                        }
-                                            </script>
-                                        <script async defer
-                                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAC1wZMLXtNtx-ZOsmuv3QjkDZSVtSOlOM&callback=initMap">
-                                        </script> -->
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="inputfile">รูปภาพ</label>
+                                                <input type="file" class="form-control" id="inputfile" name="image" accept="image/*">
+                                            </div>
+                                        </div>
         
-                                        <div class="input-group mb-3" style="width:100%;">
+                                        <!-- <div class="input-group mb-3" style="width:100%;">
                                         <div class="custom-file">
                                             <input type="file" name="image" class="custom-file-input" id="inputGroupFile02" accept="image/*">
                                             <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">เลือกรูปภาพ</label>
                                         </div>
-                                        </div>
+                                        </div> -->
 
                                         <!-- แสดงชื่อรูปภาพที่เลือก -->
                                         <script>
@@ -218,7 +223,6 @@ function checkType(type){
                     </div>
                 </div>
         </div>
-        
         <?php include('footer.php')?>
         <?php include('import-javascript.php')?>
         <script src="js/index.js"></script>

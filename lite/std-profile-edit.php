@@ -53,49 +53,44 @@
                         <div class="col-lg-9 col-md-7">
                             <div class="card">
                                     
-                                    <div class="card-body">
+                                    <div class="card-body" >
                                         <div class="card-top" style="width: 100%; height: 100%; ">
                                             <h3>ข้อมูลนักศึกษา</h3><hr/>
                                         </div>
 
                                         <div class="container table-responsive">  
                                             <button type="button" class="btn btn-info edit-data" id="<?php echo $_SESSION['id'];?>"><i class="material-icons">edit</i></button>  
-                                            <table class="table table-borderless">
+                                            <table class="table table-hover" >
                                                 
                                                 <tbody>
                                                 <tr>
-                                                    <td style="height:50px; width: 30%;"  id="image">
-                                                        <div id="imghtml"></div>
-                                                    </td>
-                                                    
-                                                    <td>
-                                                        <table>
-                                                            <tr>                                                   
-                                                                <td style="width: 30%;">รหัสนักศึกษา</td>
-                                                                <td id="stdid" style="width: 40%;"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <!-- <td style="height:50px;">Mary</td> -->
-                                                                <td>ชื่อ - นามสกุล</td>
-                                                                <td id="name"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <!-- <td style="height:50px;">July</td> -->
-                                                                <td>ที่อยู่</td>
-                                                                <td id="address"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <!-- <td style="height:50px;"></td> -->
-                                                                <td>หมายเลขโทรศัพท์</td>
-                                                                <td id="tel"></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <!-- <td style="height:50px;"></td> -->
-                                                                <td>อีเมล์</td>
-                                                                <td id="email"></td>
-                                                            </tr>                                                      
-                                                        </table>
-                                                    </td>
+                                                    <td style="height:50px;font-size:14px;" row="2" >รูปภาพ</td>
+                                                    <td id="image"><img src="" ></td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>รหัสนักศึกษา</td>
+                                                    <td id="stdid"></td>
+                                                </tr>
+                                                <tr>
+                                                    <!-- <td style="height:50px;">Mary</td> -->
+                                                    <td>ชื่อ - นามสกุล</td>
+                                                    <td id="name"></td>
+                                                </tr>
+                                                <tr>
+                                                    <!-- <td style="height:50px;">July</td> -->
+                                                    <td>ที่อยู่</td>
+                                                    <td id="address"></td>
+                                                </tr>
+                                                <tr>
+                                                    <!-- <td style="height:50px;"></td> -->
+                                                    <td>หมายเลขโทรศัพท์</td>
+                                                    <td id="tel"></td>
+                                                </tr>
+                                                <tr>
+                                                    <!-- <td style="height:50px;"></td> -->
+                                                    <td>อีเมล์</td>
+                                                    <td id="email"></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -143,8 +138,7 @@
                                                 </div> 
                                                 <div class="custom-file form-group">
                                                     <label for="comment">รูปภาพ(ถ้ามี)</label>
-                                                    <input type="file" class="form-control" id="inputfile" accept="image/*" style="width:467px;" id="actpic" name="actpic">
-
+                                                    <input type="file" class="form-control" id="inputfile" accept="image/*" style="width:467px;">
                                                     <!-- <input type="file" id="actpic" name="actpic" accept="image/*" class="custom-file-input" id="customFile">
                                                     <label class="custom-file-label" for="customFile">Choose file</label> -->
                                                 </div>                           
@@ -171,8 +165,6 @@
         </div>
         <script>
         $(document).ready(function(){
-            getStudentData();
-            function getStudentData(){
             $.ajax({
                 url: './MySQL/student/get-json-profile.php',
                 type: 'get',
@@ -185,20 +177,15 @@
                     var email = resp.email;
                     var image = resp.image;
 
+                    // document.getElementByID("stdid").innnerHTML = id
                     document.getElementById("stdid").innerHTML= id;
                     document.getElementById("name").innerHTML= name;
                     document.getElementById("address").innerHTML= address;
                     document.getElementById("tel").innerHTML= telephone;
                     document.getElementById("email").innerHTML= email;
-
-                    (image === null) ? 
-                    $("#imghtml").html('<img src="../import-files/user-img/priest.png" style="width: 180px;"/>')
-                    :
-                    $("#imghtml").html('<img src="../import-files/user-img/' + image + '" style="width: 180px;"/>');
-
+                    // console.log(id)
                 }
             });
-            }
 
             $(document).on('click', '.edit-data', function(){
                 $.ajax({
@@ -212,7 +199,6 @@
                     $("#addr").val(resp.address);
                     $("#phone").val(resp.telephone);
                     $("#mail").val(resp.email);
-                    // $(".custom-file-input").siblings(".custom-file-label").addClass("selected").html(resp.image);
 
                     $("#myModal").modal('show');
                     
@@ -223,34 +209,20 @@
             });
 
             $("#btnUpdate").click(function(){
-                // console.log($("#frmprofile")[0]);
-                // var formData = new FormData($(this)[0]);
-                // formData.append("#frmprofile",$("#mytext2").val());
                 // console.log($("#frmprofile :input").val())
-                // var form = $('#frmprofile')[0];
-                // var data = new FormData(form);
-
                 $.ajax({
                     type: "POST",
                     url: "./MySQL/student/edit-profile.php",
-                    enctype: 'multipart/form-data',
-                    data: new FormData($("#frmprofile")[0]),
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    dataType: 'json',
+                    // contentType: false,
+                    // processData: false,
+                    data: $("#frmprofile").serialize(),
                     // data: $("#frmprofile").serialize(),
                     success: function(res){
                         console.log(res)
-                        if(res.status = 1){
-                            alert('แก้ไขข้อมูลสำเร็จ')
-                            getStudentData();
-                            $('#myModal').modal('hide');
-                        }else{
-                            alert('แก้ไขข้อมูลไม่สำเร็จ กรุณาลองใหม่')
-                        }
-                        // console.log(res)
                     }
+                    // error: function(err){
+                    //     console.log(err)
+                    // }
                 });
 
             })

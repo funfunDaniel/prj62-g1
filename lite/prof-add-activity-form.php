@@ -3,6 +3,11 @@
 ?>
 <html lang="en">
     <head>
+        <style>
+             label {
+                font-size:14px;
+            }
+        </style>
         <title>
             เพิ่มกิจกรรม | กิจกรรมนักศึกษา
         </title>
@@ -69,7 +74,7 @@
                                                                     <label for="activity-type">ประเภทกิจกรรม</label>
                                                                 </td>
                                                                 <td>
-                                                                    <select name="acttype" class="form-control" id="sel1">
+                                                                    <select name="acttype" class="selectborder" id="sel1">
                                                                         <option value="none">----- เลือกประเภทกิจกรรม -----</option>
                                                                         <option value="university">มหาวิทยาลัย</option>
                                                                         <option value="school">สำนักวิชา</option>
@@ -79,7 +84,7 @@
                                                             </tr>
                                                         <tr>
                                                             <td>
-                                                                <label for="usr">ชื่อกิจกรรม</label>
+                                                                <label for="actname">ชื่อกิจกรรม</label>
                                                             </td>
                                                             <td>
                                                                 <input name="actname" type="text" class="form-control" id="usr">
@@ -87,15 +92,16 @@
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                วันที่จัดกิจกรรม
+                                                            <label for="date">วันที่จัดกิจกรรม</label>
                                                             </td>
                                                             <td>
-                                                                <input name="actdate" type="date" name="bday">
+                                                                <input name="actdate" type="date" name="bday" >
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                ทักษะที่เกี่ยวข้อง*
+                                                            <label for="skills">ทักษะที่เกี่ยวข้อง*</label>
+                                                                
                                                             </td>
                                                             <td>
                                                                 <?php 
@@ -106,7 +112,7 @@
                                                                     echo '
                                                                     <div id="skill-list">
 
-                                                                        <select class="form-control " name="skill-list" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> ';
+                                                                        <select class="selectborder" name="skill-list" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> ';
                                                                         while($row = mysqli_fetch_array($result)){
                                                                             echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
                                                                         }
@@ -243,7 +249,7 @@
                                                                 <label for="comment">รายละเอียด</label>
                                                             </td>
                                                             <td>
-                                                                <textarea name="actdetail" class="form-control" rows="5" id="comment"></textarea>
+                                                                <textarea name="actdetail" class="textareaborder" rows="8" id="comment"></textarea>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -252,8 +258,9 @@
                                                             </td>
                                                             <td>
                                                                 <div class="custom-file">
-                                                                    <input type="file" name="actfile" class="custom-file-input" id="customFile">
-                                                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                                                    <input type="file" class="form-control" name="actfile" d="customFile" >
+                                                                    <!-- <input type="file" name="actfile" class="custom-file-input" id="customFile">
+                                                                    <label class="custom-file-label" for="customFile">Choose file</label> -->
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -263,8 +270,9 @@
                                                             </td>
                                                             <td>
                                                                 <div class="custom-file">
-                                                                    <input type="file" name="actpic" accept="image/*" class="custom-file-input" id="customFile">
-                                                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                                                    <input type="file" name="actpic" class="form-control" id="customFile" accept="image/*">
+                                                                    <!-- <input type="file" name="actpic" accept="image/*" class="custom-file-input" id="customFile">
+                                                                    <label class="custom-file-label" for="customFile">Choose file</label> -->
                                                                 </div>                                                    
                                                             </td>
                                                             <script>

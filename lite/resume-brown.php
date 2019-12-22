@@ -1,6 +1,15 @@
 <?php 
     session_start();
 ?>
+  <style>
+       
+       .thumb-post1 img {
+       object-fit: fill;
+       object-position: center;
+       height:257px;
+      
+   }
+   </style>
  <p  id="preview"><img src="../images/resume-templete/resume-brown.png"></p>
     <!-- resume2 -->
     <div id="resume202">

@@ -17,9 +17,9 @@
     $pass = $_POST["password"];
     // $id = $_POST["id"];
     
-    // echo '<script>console.log("'.$type.'")</script>';
-    // echo '<script>console.log("'.$user.'")</script>';
-    // echo '<script>console.log("'.$pass.'")</script>';
+    echo '<script>console.log("'.$type.'")</script>';
+    echo '<script>console.log("'.$user.'")</script>';
+    echo '<script>console.log("'.$pass.'")</script>';
     // echo '<script>console.log'".$type."'</script>'
     // echo '<script>console.log'".$type."'</script>'
 
@@ -39,26 +39,18 @@
         $row = mysqli_fetch_assoc($result);
         $_SESSION["id"] = $row["id"];
         $_SESSION["position"] = $type;
-        // $_SESSION["name"] = $row["username"];
         $_SESSION["username"] = $row["firstname"] . ' ' .$row["lastname"] ;
-
-        if($type != 'employee'){
-            header('Location:index-it.php');
+        // echo 'Hello คุณ. '.$row["firstname"].' '.$row["lastname"].'';
+        if($type == 'student'){
+            header('Location:index-it-Student.php');
+        }elseif($type == 'professor'){
+            header('Location:index-it-professor.php');
         }else{
-            header('Location:admin-index.php');
+            header('Location:index-it-employee.php');   
         }
-        
-        // header('Location:index-it.php');
 	} else {
-        if($type != 'employee'){
-            echo '<script>alert("ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง กรุณาลองอีกครั้ง!!!")
-            window.location.href="login.php"</script>';
-        }else{
-            echo '<script>alert("ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง กรุณาลองอีกครั้ง!!!")
-            window.location.href="admin-login.php"</script>';
-        }
+        echo 'ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง กรุณาลองอีกครั้ง!!!';
     }
-    // header('Location:index-it.php');
     
     $conn->close();
 

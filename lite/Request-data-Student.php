@@ -5,26 +5,24 @@
 <html lang="en">
 
 <head >
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="./css/stylesheet1.css">
     <link rel="stylesheet" href="./css/stylesheet2.css">
-    <link rel="stylesheet" media="screen and (min-width: 900px)" href="widescreen.css">
-    <link rel="stylesheet" media="screen and (max-width: 600px)" href="smallscreen.css">
+    <!-- <link rel="stylesheet" href="./css/stylesheet6.css"> -->
 	
 	<script src="showAll.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <?php  include('header.php') ?>
- 
 
 </head>
 
@@ -49,7 +47,7 @@
                 <div class="card-body little-logo text-center">                  
                     <div class="pro-img"><img src="../images/logo-header.gif" alt="user"></div>
                       <h3 class="m-b-0">สำนักวิชาเทคโนโลยีสังคม</h3> 
-					
+					  
 			<!-- Left Menu Bar-->        
             <?php include 'index-left-bar.php';?>
 			
@@ -60,7 +58,7 @@
 		  <div class="col-lg-9 col-md-7">
             <div class="card">
               <div class="card-block">
-		  
+              
 		  <?php
         if(isset($_REQUEST["view"])){
                 if($_REQUEST["view"] == "gp"){
@@ -112,109 +110,76 @@
                 include 'det-form.php';
 				;
             }else{
-                ?>
-                
-          
+              null;}
+                ?>	
                 <!-- Center Content -->
-        <div >
-            <!-- <div class="card card-top" > -->
-                <h3>เข้าสู่ระบบ</h3><hr/>
-                <!-- Login Form -->
-                
-                <form name="searchForm" action="check-login.php" method="POST" style="text-align: -webkit-center;">
-                <div class="tab btn-group btn-group-toggle" data-toggle="buttons" style="width:-webkit-fill-available;">
-                   
-                    <label class="tablink btn active" >
-                        <input type="radio" name="usertype" value="student" autocomplete="off" checked> นักศึกษา
-                    </label>
-                    <label class="tablink btn ">
-                        <input type="radio" name="usertype" value="professor" autocomplete="off"> อาจารย์
-                    </label>
-                    <label class="tablink btn ">
-                        <input type="radio" name="usertype" value="employee" autocomplete="off"> บุคลากร
-                    </label>
-                </div>
-                <br />
-                <br/>
-                   
-                    <div class="row" style="margin-block-start: auto; margin: auto;">
-                        <div class="col">
-                        </div>
-                        <div class="col">
-                             <label style="float:left;">ชื่อผู้ใช้งาน: </label>
-                        </div>
-                        <div class="col">
-                        </div>
-                    </div>
-                    <div class="row" style="margin-block-start: auto; margin: auto;">
-                        <div class="col">
-                        </div>
-                        <div class="col">
-                        <input type="text" class="input-login" name="username" style="width: 250px;height: 40px;margin-top: 5px;margin-bottom: 5px;" required autofocus />
-                        </div>
-                        <div class="col">
-                        </div>
+                <div class="card card-top  " style="width: 100%; height: 100%; ">
+                    <h3>แบบฟอร์มขอเพิ่มผลงาน กิจกรรม</h3><hr/>
+                    <!-- Login Form -->
+                    <form name="searchForm" action="check-login.php" method="POST" >
+                    <div class="form-group" id="actype">
+                         <span class="input-group-prepend" id="inputGroupPrepend">ประเภทของกิจกรรม</span><br/>
+                        <select class="form-control " id="activitytype" style="width: 300px;height: 40px;margin-top: 5px;margin-bottom: 5px;border-color:#2E9AFE;"> 
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        </select>
                     </div>
 
-                    <div class="row" style="margin-block-start: auto; auto; margin: auto;">
-                        <div class="col">
-                        </div>                       
-                        <div class="col">
-                            <small id="emailHelp" class="form-text text-muted" style="float:right;">สำหรับนักศึกษา: กรอกรหัสนักศึกษา</small>
-                         </div>
-                        <div class="col">
-                        </div>
+                    <div class="form-group" id="acname">
+                         <span class="input-group-prepend" id="inputGroupPrepend">ชื่อกิจกรรม</span><br/>
+                        <select class="form-control " id="activityname" style="width: 300px;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> 
+                        <option>กิจกรรม1</option>
+                        <option>กิจกรรม2</option>
+                        <option>กิจกรรม3</option>
+                        </select>
                     </div>
-                       
-                    <div class="row"style="margin-block-start: auto; margin: auto;">
-                        <div class="col">
-                        </div>                       
-                        <div class="col">
-                            <label style="float:left;">รหัสผ่าน: </label>
-                         </div>
-                        <div class="col">
-                        </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">รายละเอียด</label><br/>
+                        <textarea class="form-control" id="detail" rows="5" style="width: 300px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"></textarea>
                     </div>
-
-                    <div class="row" style="margin-block-start: auto; margin: auto;">
-                        <div class="col">
-                        </div>
-                        <div class="col">
-                        <input type="password" class="input-login" name="password" style="width: 250px;height: 40px;margin-top: 5px;margin-bottom: 15px;" required autofocus />
-                        </div>
-                        <div class="col">
-                        </div>
+                 
+                    <div class="input-group mb-3" style="width:300px;">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="inputGroupFile02">
+                        <label class="custom-file-label" for="inputGroupFile02" aria-describedby="inputGroupFileAddon02">เลือกรูปภาพ</label>
+                    </div>
                     </div>
 
-                    <div class="row" style="margin-block-start: auto; margin: auto;">
-                        <div class="col">
-                        </div>
-                        <div class="col">
-                        <input type="submit" value="เข้าสู่ระบบ" class="btn-login" style="width: 250px;height: 40px;margin-top: 5px;margin-bottom: 15px;"/>
-                        </div>
-                        <div class="col">
-                        </div>
-                    </div>
+                    <div style="width:320px;">
+                    <button type="button" class="btn btn-primary" style="width:150px">Save</button>
+                    <button type="button" class="btn btn-warning" style="width:150px">Clear</button>
                     
-                </form>
-				
-                
-                <br/>
-                <p style="font-size:14px">*หมายเหตุ หากลืมชื่อผู้ใช้งานหรือรหัสผ่านโปรดติดต่อผู้ดูแลระบบได้ที่ศูนย์ปฏิบัติการคอมพิวเตอร์</p>
-            <!-- </div> -->
-        </div> 
-			<?php } ?>
+                    </form>
+                </div>
+            </div> 
+		
 
               </div>
             </div>
           </div>
         </div>
-      </div>
+     
 
      
     <?php include('footer.php')?>
     <?php include('import-javascript.php')?>
     <script src="js/index.js"></script>
+    <script>
+        function openContent(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+        }
+        </script>
 </body>
 
 </html>

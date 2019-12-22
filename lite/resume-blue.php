@@ -1,11 +1,20 @@
 <?php 
     session_start();
 ?>
+  <style>
+       
+       .thumb-post1 img {
+       object-fit: fill;
+       object-position: center;
+       height:257px;
+      
+   }
+   </style>
 <p  id="preview"><img src="../images/resume-templete/resume-blue.png"></p>
     <!-- resume2 -->
     <div id="resume202">
         <div>
-            <p id="fullnameresume2" style="color:white; position: absolute;top: 60px; left: 100px;  font-size: 40px;"></p>
+            <p id="fullnameresume2" style="color:white; position: absolute;top: 50px; left: 70px;  font-size: 60px;"></p>
         </div>
 
         <div class="thumb-post1" id="picprofile">
@@ -52,7 +61,7 @@ $(document).ready(function(){
                 type: 'get',
                 dataType: 'JSON',
                 success: function(resp){
-                    console.log('RESUME RESP: ' , resp);
+                    console.log(resp);
                     // ข้อมูลส่วนตัว ใช้ getelementbyid ได้เลย
                     var name = resp[0].name
                     var address = resp[0].address
