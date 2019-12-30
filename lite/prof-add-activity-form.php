@@ -69,12 +69,37 @@
                                                                     <label for="activity-type">ประเภทกิจกรรม</label>
                                                                 </td>
                                                                 <td>
-                                                                    <select name="acttype" class="form-control" id="sel1">
+                                                                    <!-- <select name="acttype" class="form-control" id="sel1">
                                                                         <option value="none">----- เลือกประเภทกิจกรรม -----</option>
                                                                         <option value="university">มหาวิทยาลัย</option>
                                                                         <option value="school">สำนักวิชา</option>
                                                                         <option value="other">หน่วยงานภายนอก</option>
-                                                                    </select>
+                                                                    </select> -->
+                                                                    <?php 
+                                                                include 'config.php';
+                                                                $sql = "SELECT * FROM `department`";
+                                                                $result = mysqli_query($conn,$sql);
+                                                                if (mysqli_num_rows($result) > 0){
+                                                                    echo '
+                                                                    <div id="dep-list">
+
+                                                                        <select class="form-control " name="dep-list" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> ';
+                                                                        while($row = mysqli_fetch_array($result)){
+                                                                            echo '<option value="'.$row['id'].'">'.$row['department'].'</option>';
+                                                                        }
+                                                                        echo '</select>
+                                                                    </div>
+                                                                    ';
+                                                                }else{
+                                                                    echo '
+                                                                    <div id="dep-list">
+
+                                                                        <select class="form-control " name="dep-list" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> 
+                                                                        <option value="no-dep">ไม่มีหน่วยงาน</option></select>
+                                                                    </div>
+                                                                    ';
+                                                                }
+                                                                ?>
                                                                 </td>
                                                             </tr>
                                                         <tr>
@@ -112,18 +137,15 @@
                                                                         }
                                                                         echo '</select>
                                                                     </div>
-                                                                    <div>
-                                                                        เพิ่มทักษะได้ <button type="button" class="btn btn-link" id="add-skill" data-toggle="modal" data-target="#exampleModal">ที่นี่.</button>
-                                                                    </div>
+                                                                    
                                                                     ';
                                                                 }else{
                                                                     echo '
-                                                                    <div class="alert alert-warning" role="alert">
-                                                                        ไม่มีทักษะในฐานข้อมูล สามารถเพิ่มทักษะได้ <button type="button" class="btn btn-link" id="add-skill" data-toggle="modal" data-target="#exampleModal">ที่นี่</button>.
-                                                                    </div>
-                                                                    
+                                                                    <div id="skill-list">
 
-                                                                    
+                                                                        <select class="form-control " name="skill-list" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> 
+                                                                        <option value="no-dep">ไม่มีทักษะ</option></select>
+                                                                    </div>
                                                                     ';
                                                                 }
                                                                 echo '
@@ -150,6 +172,10 @@
                                                                     </div>
                                                                 ';
                                                                 ?>
+
+                                                                <!-- <div>
+                                                                        เพิ่มทักษะได้ <button type="button" class="btn btn-link" id="add-skill" data-toggle="modal" data-target="#exampleModal">ที่นี่.</button>
+                                                                    </div> -->
 
                                                                 <script>
                                                                 $(document).ready(function(){
