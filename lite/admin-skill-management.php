@@ -80,38 +80,16 @@
 
   <!-- Sidebar -->
   <ul class="sidebar navbar-nav">
-  <!-- <li class="nav-item active">
-      <a class="nav-link" href="admin-activity-management.php">
-      <i class="fas fa-star"></i>
-        <span>Activity</span>
-        </a>
-    </li> -->
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         <i class="fas fa-star"></i>
         <span>Activity</span>
       </a>
       <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-        <!-- <h6 class="dropdown-header">Login Screens:</h6> -->
         <a class="dropdown-item" href="admin-activity-management.php">หน่วยงาน</a>
-        <a class="dropdown-item" href="admin-skill-management.php">ทักษะ</a>
-        <!-- <div class="dropdown-divider"></div> -->
-        <!-- <h6 class="dropdown-header">Other Pages:</h6> -->
-        <!-- <a class="dropdown-item" href="404.html">404 Page</a> -->
-        <!-- <a class="dropdown-item" href="blank.html">Blank Page</a> -->
+        <a class="dropdown-item" href="#">ทักษะ</a>
       </div>
-      <!-- <i class="fas fa-sort-down"></i> -->
     </li>
-    <!-- <li class="nav-item">
-      <a class="nav-link" href="charts.html">
-        <i class="fas fa-fw fa-chart-area"></i>
-        <span>Charts</span></a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="tables.html">
-        <i class="fas fa-fw fa-table"></i>
-        <span>Tables</span></a>
-    </li> -->
   </ul>
 
   
@@ -128,20 +106,19 @@
         <div class="card mb-3">
           <div class="card-header">
             <i class="fas fa-building"></i>
-            หน่วยงานที่เกี่ยวข้อง
+            ทักษะที่เกี่ยวข้อง
           </div>
           <div class="card-body">
             <div class="table-responsive">
-            <button type="button" class="btn btn-info add-department"><i class="fas fa-plus"></i> เพิ่มหน่วยงาน</button> 
+            <button type="button" class="btn btn-info add-skill"><i class="fas fa-plus"></i> เพิ่มทักษะ</button> 
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>หน่วยงาน</th>
-                        <th>ต้นสังกัด</th>
+                        <th>ชื่อทักษะ</th>
                     </tr>
                     </thead>
-                    <tbody id="department-table">
+                    <tbody id="skill-table">
                     </tbody>
                 </table>
             </div>
@@ -158,20 +135,20 @@
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">เพิ่มหน่วยงาน</h4>
+                <h4 class="modal-title">เพิ่มทักษะ</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <!-- Modal body --> 
             <form id="data-form" name="data-form">               
               <div class="modal-body">
                 <div class="form-group">
-                  <label for="dep">หน่วยงาน:</label>
-                  <input type="text" class="form-control" id="dep" name="dep">
+                  <label for="dep">ทักษะ:</label>
+                  <input type="text" class="form-control" id="skill" name="skill">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                   <label for="aff">ต้นสังกัด:</label>
                   <input type="text" class="form-control" id="aff" name="aff">
-                </div>    
+                </div>     -->
               </div>
             </form>
             <!-- Modal footer -->
@@ -244,14 +221,13 @@
 </script>
 <script>
     $(document).ready(function(){
-      getDepartmentData();
-
-            $(document).on('click', '.add-department', function(){
+      getSkillData();
+            $(document).on('click', '.add-skill', function(){
               $("#myModal").modal('show');
             });
 
             $(document).on('click', '#btnUpdate', function(){
-              addDepartment()
+              addSkill()
             });
         });
 </script>

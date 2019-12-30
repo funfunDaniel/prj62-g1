@@ -80,11 +80,27 @@
 
   <!-- Sidebar -->
   <ul class="sidebar navbar-nav">
-  <li class="nav-item active">
+  <!-- <li class="nav-item active">
       <a class="nav-link" href="admin-activity-management.php">
       <i class="fas fa-star"></i>
         <span>Activity</span>
         </a>
+    </li> -->
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <i class="fas fa-star"></i>
+        <span>Activity</span>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+        <!-- <h6 class="dropdown-header">Login Screens:</h6> -->
+        <a class="dropdown-item" href="admin-activity-management.php">หน่วยงาน</a>
+        <a class="dropdown-item" href="admin-skill-management.php">ทักษะ</a>
+        <!-- <div class="dropdown-divider"></div> -->
+        <!-- <h6 class="dropdown-header">Other Pages:</h6> -->
+        <!-- <a class="dropdown-item" href="404.html">404 Page</a> -->
+        <!-- <a class="dropdown-item" href="blank.html">Blank Page</a> -->
+      </div>
+      <!-- <i class="fas fa-sort-down"></i> -->
     </li>
     <!-- <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -165,7 +181,7 @@
 </div>
 
 <!-- Custom scripts for all pages-->
-<script src="js/sb-admin.min.js"></script>
+<!-- <script src="js/sb-admin.min.js"></script>
 <script src="js/functions.js"></script>
 <script>
     $(document).ready(function(){
@@ -181,7 +197,7 @@
 
 
         });
-</script>
+</script> -->
 
 </body>
 </html>
