@@ -1,16 +1,20 @@
-<?php 
-    session_start();
-?>
-    <style>
-       
-            .thumb-post1 img {
-            object-fit: fill;
-            object-position: center;
-            height:272px;
-           
-        }
-        </style>
-<p  id="preview"><img src="../images/resume-templete/resume-red.png"></p>
+<html>
+<head>
+        <?php  include('header.php') ?>
+        <script src = "https://davidshimjs.github.io/qrcodejs/qrcode.min.js"></script> 
+        <script src = "https://davidshimjs.github.io/qrcodejs/qrcode.js"></script>
+        <style>
+        
+                .thumb-post1 img {
+                object-fit: fill;
+                object-position: center;
+                height:272px;
+            
+            }
+            </style>
+</head>
+<body>
+<p  id="preview"><img src="../images/resume-templete/resume-red.png" style="height:1350px;width:1020px;"></p>
     <!-- resume2 -->
     <div id="resume202">
         <div>
@@ -52,8 +56,18 @@
                     <tbody style="position: absolute;top: 700px; left: 400px;width:auto">
                     </tbody>
                 </table>
+                <div style="position: absolute;top:1090px; left: 70px;font-size: 19px;color:black;" id="qrcode">
+                    <!-- <img src="../images/student.png" style="width:200px"> -->
+                    <!-- <div id="qrcode"></div> -->
+                    <!-- <div id="qrcode">hgflkjlhj;lj</div> -->
+                </div>
+        
     </div>
 </div>
+
+</body>
+</html>
+
 
 
                                         

@@ -162,6 +162,29 @@
                                         </div>
                                     <!-- end class="card-body" -->
                                     </div>
+                                    
+                               
+                            </div>
+                            <div class="card">
+                                <table class="table table-borderless"  id="data-table2" style="font-size: 19px;">
+                                                <tr>                                                                                                   
+                                                    <td style="width:200px;">
+                                                        วันที่
+                                                    </td>
+                                                    <td>
+                                                        ชื่อกิจกรรม
+                                                    </td>
+                                                    <td>
+                                                        หน่วยงาน
+                                                    </td>
+                                                    <td>
+                                                        ทักษะ
+                                                    </td>                                                                                                          
+                                                </tr>
+                                                    <tbody id="tbd">
+                                                    </tbody>
+               
+                                </table>
                                
                             </div>
                         </div>
@@ -170,6 +193,37 @@
                 </div>
         </div>
         <script>
+         $(document).ready(function(){
+            $.ajax({
+                url: './MySQL/student/get-json-resume.php',
+                type: 'get',
+                dataType: 'JSON',
+                success: function(resp){
+                   
+                    var len = resp.length;
+                for(var i=0; i<len; i++){
+                    var actname = resp[i].actname;
+                    var actdate = resp[i].actdate;
+                    var acttype = resp[i].acttype;
+                    var date = actdate.substring(0,4);
+                    var skill = resp[i].skillname;
+
+
+                   
+                    var tr_str = "<tr>" +
+                    "<td  style='color:black;'>" + actdate + "</td> " +
+                    "<td  style='color:black;width:500px;'>" + actname + "</td> " +
+                    "<td  style='color:black;width:500px;'>" + acttype + "</td> " +
+                    "<td  style='color:black;width:500px;'>" + skill + "</td> " +
+                    "</tr>";
+                    console.log('dd',tr_str);
+                    $("#tbd").append(tr_str);
+                }
+                    }
+
+                
+            });
+        });
         $(document).ready(function(){
             getStudentData();
             function getStudentData(){

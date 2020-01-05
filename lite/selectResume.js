@@ -161,7 +161,7 @@ function getJSON2(){
                     var acttype = resp[i].acttype;
                     var date = actdate.substring(0,4);
                     var skill = resp[i].skillname;
-                    
+            
                     console.log(pix);
                     var pix = "<img src='../import-files/user-img/" + img + "' style=' position: absolute ;top: 0px; left: 16px; width:283px;'/>"
                     $("#picprofile").append(pix);
@@ -183,4 +183,35 @@ function getJSON2(){
                 
             });
         });
+}
+
+function getQRcode(){
+    $(document).ready(function() {
+            
+        new QRCode(document.getElementById("qrcode"),{
+                text: "https://www.ninenik.com",
+                width: 200,
+                height: 200,
+                top:1090,
+                left: 70,
+                colorDark : "#fff",
+                colorLight : "#4F4949",
+                correctLevel : QRCode.CorrectLevel.M        
+                });
+    });
+}
+function getQRcode2(){
+    $(document).ready(function() {
+            
+        new QRCode(document.getElementById("qrcode"),{
+                text: "https://www.ninenik.com",
+                width: 200,
+                height: 200,
+                top:1090,
+                left: 70,
+                colorDark : "#000",
+                colorLight : "#fff",
+                correctLevel : QRCode.CorrectLevel.M        
+                });
+    });
 }
