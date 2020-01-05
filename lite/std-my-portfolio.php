@@ -53,8 +53,8 @@
                                         <h3>คลังผลงาน | ผลงานของฉัน</h3><hr/>
                                         </div>
                                         <!-- <a href="./MySQL/student/get-json-my-portfolio.php"><input type="button" /></a> -->
-                                        <div class="table-responsive">
-                                            <table class="table" id="data-table">
+                                        <div class="table-responsive" >
+                                            <table class="table table-hover" id="data-table">
                                                 <thead>
                                                 <tr class="table-info">
                                                     <th>#</th>
@@ -64,7 +64,7 @@
                                                     <th>รูปภาพ</th>
                                                 </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody  style="font-size:14px;">
                                                 </tbody>
                                             </table>
                                         </div>

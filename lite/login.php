@@ -16,12 +16,15 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<link rel="stylesheet" href="./css/stylesheet1.css">
     <link rel="stylesheet" href="./css/stylesheet2.css">
+    <link rel="stylesheet" media="screen and (min-width: 900px)" href="widescreen.css">
+    <link rel="stylesheet" media="screen and (max-width: 600px)" href="smallscreen.css">
 	
 	<script src="showAll.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <?php  include('header.php') ?>
+ 
 
 </head>
 
@@ -46,7 +49,7 @@
                 <div class="card-body little-logo text-center">                  
                     <div class="pro-img"><img src="../images/logo-header.gif" alt="user"></div>
                       <h3 class="m-b-0">สำนักวิชาเทคโนโลยีสังคม</h3> 
-					  x
+					
 			<!-- Left Menu Bar-->        
             <?php include 'index-left-bar.php';?>
 			
@@ -113,11 +116,11 @@
                 
           
                 <!-- Center Content -->
-        <div class="centercolumn">
-            <div class="card card-top" style="width: 900px; height: 450px; ">
+        <div >
+            <!-- <div class="card card-top" > -->
                 <h3>เข้าสู่ระบบ</h3><hr/>
                 <!-- Login Form -->
-
+                
                 <form name="searchForm" action="check-login.php" method="POST" style="text-align: -webkit-center;">
                 <div class="tab btn-group btn-group-toggle" data-toggle="buttons" style="width:-webkit-fill-available;">
                    
@@ -132,8 +135,9 @@
                     </label>
                 </div>
                 <br />
-                <br />
-                <div class="row" style="margin-block-start: auto; margin: auto;">
+                <br/>
+                   
+                    <div class="row" style="margin-block-start: auto; margin: auto;">
                         <div class="col">
                         </div>
                         <div class="col">
@@ -191,12 +195,13 @@
                         <div class="col">
                         </div>
                     </div>
+                    
                 </form>
 				
                 
                 <br/>
                 <p style="font-size:14px">*หมายเหตุ หากลืมชื่อผู้ใช้งานหรือรหัสผ่านโปรดติดต่อผู้ดูแลระบบได้ที่ศูนย์ปฏิบัติการคอมพิวเตอร์</p>
-            </div>
+            <!-- </div> -->
         </div> 
 			<?php } ?>
 
