@@ -5,17 +5,15 @@ include "../../config.php";
 
 $return_arr = array();
 
-$query = "SELECT * FROM `department` ORDER BY `id` DESC";
+$query = "SELECT * FROM `resume_skill` ORDER by id DESC";
 
 $result = mysqli_query($conn,$query);
 
 while($row = mysqli_fetch_array($result)){
     $id = $row['id'];
-    $dep = $row['department'];
-    $aff = $row['affiliation'];
+    $dep = $row['name'];
     $return_arr[] = array("id" => $id,
-                    "dep" => $dep,
-                    "aff" => $aff);
+                    "name" => $dep);
 }
 // Encoding array in JSON format
 echo json_encode($return_arr);
