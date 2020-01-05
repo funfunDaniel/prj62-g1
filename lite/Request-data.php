@@ -801,7 +801,7 @@ if($type == "graduation_projects"){
 
     <!-- Footer -->
     <footer id="footer">
-        <?php include 'footer.php'; ?>
+        <?php include 'index-footer.php'; ?>
     </footer>
 </body>
 

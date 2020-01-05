@@ -55,12 +55,13 @@
                                         </div>
                                         <!-- SELECT FROM SQL  -->
 
+                                  
                                         <div class="table-responsive">
                                         <a href="#" data-toggle="tooltip" data-placement="right" title="เฉพาะรายการ 'รออนุมัติ'"><button type="button" class="btn btn-info" id="updateAll">อนุมัติทั้งหมด</button></a>
-                                        
-                                        <table class="table table-striped" id="data-table">
+                                        </br>
+                                        <table class="table table-hover" id="data-table">
                                         <thead>
-                                            <tr>
+                                            <tr class="table-info">
                                             <!-- <th scope="col">Select</th> -->
                                             <th scope="col">#</th>
                                             <th scope="col">วันที่ยื่นคำขอ</th>

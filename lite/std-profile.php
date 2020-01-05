@@ -20,6 +20,11 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <?php  include('header.php') ?>
+        <style>
+        td{
+            font-size:14px;
+        }
+        </style>
     </head>
 
     <body class="fix-header fix-sidebar card-no-border logo-center">
@@ -59,31 +64,38 @@
                                                 
                                                 <tbody>
                                                 <tr>
-                                                    <td style="height:50px; width: 30%;" rowspan="3" id="image">
+                                                    <td style="height:50px; width: 30%;"  id="image">
                                                         <div id="imghtml"></div>
                                                     </td>
-                                                    <td style="width: 30%;">รหัสนักศึกษา</td>
-                                                    <td id="stdid" style="width: 40%;"></td>
-                                                </tr>
-                                                <tr>
-                                                    <!-- <td style="height:50px;">Mary</td> -->
-                                                    <td>ชื่อ - นามสกุล</td>
-                                                    <td id="name"></td>
-                                                </tr>
-                                                <tr>
-                                                    <!-- <td style="height:50px;">July</td> -->
-                                                    <td>ที่อยู่</td>
-                                                    <td id="address"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="height:50px;"></td>
-                                                    <td>หมายเลขโทรศัพท์</td>
-                                                    <td id="tel"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="height:50px;"></td>
-                                                    <td>อีเมล์</td>
-                                                    <td id="email"></td>
+                                                    
+                                                    <td>
+                                                        <table>
+                                                            <tr>                                                   
+                                                                <td style="width: 30%;">รหัสนักศึกษา</td>
+                                                                <td id="stdid" style="width: 40%;"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <!-- <td style="height:50px;">Mary</td> -->
+                                                                <td>ชื่อ - นามสกุล</td>
+                                                                <td id="name"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <!-- <td style="height:50px;">July</td> -->
+                                                                <td>ที่อยู่</td>
+                                                                <td id="address"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <!-- <td style="height:50px;"></td> -->
+                                                                <td>หมายเลขโทรศัพท์</td>
+                                                                <td id="tel"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <!-- <td style="height:50px;"></td> -->
+                                                                <td>อีเมล์</td>
+                                                                <td id="email"></td>
+                                                            </tr>                                                      
+                                                        </table>
+                                                    </td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -131,8 +143,10 @@
                                                 </div> 
                                                 <div class="custom-file form-group">
                                                     <label for="comment">รูปภาพ(ถ้ามี)</label>
-                                                    <input type="file" id="actpic" name="actpic" accept="image/*" class="custom-file-input" id="customFile">
-                                                    <label class="custom-file-label" for="customFile">Choose file</label>
+                                                    <input type="file" class="form-control" id="inputfile" accept="image/*" style="width:467px;" id="actpic" name="actpic">
+
+                                                    <!-- <input type="file" id="actpic" name="actpic" accept="image/*" class="custom-file-input" id="customFile">
+                                                    <label class="custom-file-label" for="customFile">Choose file</label> -->
                                                 </div>                           
                                             </form>
                                         </div>
@@ -148,6 +162,29 @@
                                         </div>
                                     <!-- end class="card-body" -->
                                     </div>
+                                    
+                               
+                            </div>
+                            <div class="card">
+                                <table class="table table-borderless"  id="data-table2" style="font-size: 19px;">
+                                                <tr>                                                                                                   
+                                                    <td style="width:200px;">
+                                                        วันที่
+                                                    </td>
+                                                    <td>
+                                                        ชื่อกิจกรรม
+                                                    </td>
+                                                    <td>
+                                                        หน่วยงาน
+                                                    </td>
+                                                    <td>
+                                                        ทักษะ
+                                                    </td>                                                                                                          
+                                                </tr>
+                                                    <tbody id="tbd">
+                                                    </tbody>
+               
+                                </table>
                                
                             </div>
                         </div>
@@ -156,6 +193,37 @@
                 </div>
         </div>
         <script>
+         $(document).ready(function(){
+            $.ajax({
+                url: './MySQL/student/get-json-resume.php',
+                type: 'get',
+                dataType: 'JSON',
+                success: function(resp){
+                   
+                    var len = resp.length;
+                for(var i=0; i<len; i++){
+                    var actname = resp[i].actname;
+                    var actdate = resp[i].actdate;
+                    var acttype = resp[i].acttype;
+                    var date = actdate.substring(0,4);
+                    var skill = resp[i].skillname;
+
+
+                   
+                    var tr_str = "<tr>" +
+                    "<td  style='color:black;'>" + actdate + "</td> " +
+                    "<td  style='color:black;width:500px;'>" + actname + "</td> " +
+                    "<td  style='color:black;width:500px;'>" + acttype + "</td> " +
+                    "<td  style='color:black;width:500px;'>" + skill + "</td> " +
+                    "</tr>";
+                    console.log('dd',tr_str);
+                    $("#tbd").append(tr_str);
+                }
+                    }
+
+                
+            });
+        });
         $(document).ready(function(){
             getStudentData();
             function getStudentData(){
@@ -227,6 +295,7 @@
                     dataType: 'json',
                     // data: $("#frmprofile").serialize(),
                     success: function(res){
+                        console.log(res)
                         if(res.status = 1){
                             alert('แก้ไขข้อมูลสำเร็จ')
                             getStudentData();
