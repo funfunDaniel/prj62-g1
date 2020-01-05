@@ -15,16 +15,16 @@
         <link rel="stylesheet" href="./css/stylesheet1.css">
         <link rel="stylesheet" href="./css/stylesheet2.css">
         
-        <script src="./js/jquery-3.4.1.js"></script>
+        <!-- <script src="./js/jquery-3.4.1.js"></script> -->
         <script src="showAll.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         <script src="sweetalert2.min.js"></script>
         <link rel="stylesheet" href="sweetalert2.min.css">
 
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
         <?php  include('header.php') ?>
     </head>
 
@@ -118,6 +118,14 @@
                                                                 <input name="actdate" type="date" name="bday">
                                                             </td>
                                                         </tr>
+
+                                                        <tr>
+                                                        <td>
+                                                        </td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-primary" id="btnweightskill">เพิ่มน้ำหนักทักษะ</button>
+                                                        </td>
+                                                        </tr>
                                                         <tr>
                                                             <td>
                                                                 ทักษะที่เกี่ยวข้อง*
@@ -129,9 +137,10 @@
                                                                 $result = mysqli_query($conn,$sql);
                                                                 if (mysqli_num_rows($result) > 0){
                                                                     echo '
+
                                                                     <div id="skill-list">
 
-                                                                        <select class="form-control " name="skill-list" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> ';
+                                                                        <select id="select-skill" data-actions-box="true" class="form-control selectpicker" multiple name="skill-list" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> ';
                                                                         while($row = mysqli_fetch_array($result)){
                                                                             echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
                                                                         }
@@ -178,6 +187,8 @@
                                                                     </div> -->
 
                                                                 <script>
+                                                                        $('.selectpicker').selectpicker();
+
                                                                 $(document).ready(function(){
                                                                     // $("#frmaddskill").on("submit", function(event){
                                                                     //     event.preventDefault();
@@ -186,6 +197,20 @@
                                                                     //         alert('Input is required')
                                                                     //     }
                                                                     // });
+                                                                    $("#btnweightskill").click(function(){
+                                                                        // console.log('weightskill');
+                                                                         event.preventDefault();
+                                                                         if($('#select-skill').val() != '')
+                                                                         {
+                                                                            console.log($('#select-skill').val())
+                                                                         }
+                                                                         else
+                                                                         {
+                                                                            alert('Please select skill');
+                                                                            return false;
+                                                                         }
+                                                                    });
+
                                                                     $("#btnaddskill").click(function(){
                                                                         if($("#skill-name").val() == "")
                                                                         {
@@ -380,6 +405,14 @@
         </div>
         <?php include('footer.php')?>
         <?php include('import-javascript.php')?>
-        <script src="js/index.js"></script>
+        <!-- <script src="tail.select-full.min.js"></script> -->
+        <script src="js/index.js">
+
+        
+
+                // tail.select('#select-skill', {
+                //     search: true
+                // })
+        </script>
     </body>
 </html>
