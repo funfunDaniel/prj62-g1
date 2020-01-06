@@ -1,4 +1,6 @@
+<script>
 var xmlHttp;
+var id;
 function createXMLHttpRequest()
 { 
      if (window.ActiveXObject)  // Internet Explorer
@@ -104,6 +106,9 @@ function getJSON(){
                         $("#aboutmail2").append(email);
                         $("#aboutadd2").append(address);
                         
+                        var pix = "<img src='../import-files/user-img/" + img + "' class='pic'/>"
+                        $("#picprofile").append(pix);
+
                         var len = resp.length;
                     for(var i=0; i<len; i++){
                         var actname = resp[i].actname;
@@ -113,18 +118,18 @@ function getJSON(){
                         var skill = resp[i].skillname;
                         
                         console.log(pix);
-                        var pix = "<img src='../import-files/user-img/" + img + "' style=' position: absolute ;top: 20px; left: 684px; width:257px;'/>"
-                        $("#picprofile").append(pix);
+                        // var pix = "<img src='../import-files/user-img/" + img + "' style=' position: absolute ;top: 20vw; left: 671vw; width:258vw;'/>"
+                        // $("#picprofile").append(pix);
 
                         var tr_skill = "<tr>" +
-                        "<td  style='font-size: 19px;color:black;width:100px;'>" + skill + "</td> " +
-                        "<td  style='position: absolute;font-size: 19px;color:black;width:500px;'><i class='material-icons'>fiber_manual_record</i></td> " +
+                        "<td  style='color:black;'>" + skill + "</td> " +
+                        "<td  style='position: absolute;color:black;'><i class='material-icons'>fiber_manual_record</i></td> " +
                         "</tr>";
                         $("#skill-table tbody").append(tr_skill);
 
                         var tr_str = "<tr>" +
-                        "<td  style='font-size: 19px;color:black;width:100px;'>" + date + "</td> " +
-                        "<td  style='position: absolute;font-size: 19px;color:black;width:500px;'>" + actname + "</td> " +
+                        "<td  class='td1'>" + date + "</td> " +
+                        "<td  style='position: absolute;color:black;'>" + actname + "</td> " +
                         "</tr>";
                         $("#data-table tbody").append(tr_str);
                     }"<br/>"
@@ -136,6 +141,7 @@ function getJSON(){
 }
 
 function getJSON2(){
+    
     $(document).ready(function(){
             $.ajax({
                 url: './MySQL/student/get-json-resume.php',
@@ -153,7 +159,8 @@ function getJSON2(){
                     $("#abouttel2").append(tel);
                     $("#aboutmail2").append(email);
                     $("#aboutadd2").append(address);
-                    
+                    var pix = "<img src='../import-files/user-img/" + img + "' class='pic'/>"
+                    $("#picprofile").append(pix);
                     var len = resp.length;
                 for(var i=0; i<len; i++){
                     var actname = resp[i].actname;
@@ -163,18 +170,17 @@ function getJSON2(){
                     var skill = resp[i].skillname;
             
                     console.log(pix);
-                    var pix = "<img src='../import-files/user-img/" + img + "' style=' position: absolute ;top: 0px; left: 16px; width:283px;'/>"
-                    $("#picprofile").append(pix);
+                  
 
                     var tr_skill = "<tr>" +
-                    "<td  style='font-size: 19px;color:black;width:100px;'>" + skill + "</td> " +
-                    "<td  style='position: absolute;font-size: 19px;color:black;width:500px;'><i class='material-icons'>fiber_manual_record</i></td> " +
+                    "<td  style='color:black;'>" + skill + "</td> " +
+                    "<td  style='position: absolute;color:black;width:auto;'><i class='material-icons'>fiber_manual_record</i></td> " +
                     "</tr>";
                     $("#skill-table tbody").append(tr_skill);
 
                     var tr_str = "<tr>" +
-                    "<td  style='font-size: 19px;color:black;width:100px;'>" + date + "</td> " +
-                    "<td  style='position: absolute;font-size: 19px;color:black;width:500px;'>" + actname + "</td> " +
+                    "<td  class='td1'>" + date + "</td> " +
+                    "<td  style='position: absolute;color:black;width:500px;'>" + actname + "</td> " +
                     "</tr>";
                     $("#data-table tbody").append(tr_str);
                 }"<br/>"
@@ -185,11 +191,12 @@ function getJSON2(){
         });
 }
 
-function getQRcode(){
+var path = "http://it2.sut.ac.th/project62_g1/it-website/lite/std-profile-id.php?std_id=<?php echo $_SESSION["id"]; ?>";
+
+function getQRcode(){  
     $(document).ready(function() {
-            
         new QRCode(document.getElementById("qrcode"),{
-                text: "https://www.ninenik.com",
+                text: path,
                 width: 200,
                 height: 200,
                 top:1090,
@@ -199,12 +206,12 @@ function getQRcode(){
                 correctLevel : QRCode.CorrectLevel.M        
                 });
     });
+    console.log('finish qrcode');
 }
 function getQRcode2(){
     $(document).ready(function() {
-            
         new QRCode(document.getElementById("qrcode"),{
-                text: "https://www.ninenik.com",
+                text: path,
                 width: 200,
                 height: 200,
                 top:1090,
@@ -214,4 +221,6 @@ function getQRcode2(){
                 correctLevel : QRCode.CorrectLevel.M        
                 });
     });
+    console.log('finish qrcode');
 }
+</script>
