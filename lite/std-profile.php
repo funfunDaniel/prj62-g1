@@ -245,7 +245,7 @@
                     document.getElementById("tel").innerHTML= telephone;
                     document.getElementById("email").innerHTML= email;
 
-                    (image === null) ? 
+                    (image === '') ? 
                     $("#imghtml").html('<img src="../import-files/user-img/priest.png" style="width: 180px;"/>')
                     :
                     $("#imghtml").html('<img src="../import-files/user-img/' + image + '" style="width: 180px;"/>');

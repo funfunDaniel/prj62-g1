@@ -46,7 +46,7 @@
         }elseif($type == 'professor'){
             header('Location:index-it-professor.php');
         }else{
-            header('Location:index-it-employee.php');   
+            header('Location:admin-index.php');   
         }
 	} else {
         echo 'ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง กรุณาลองอีกครั้ง!!!';

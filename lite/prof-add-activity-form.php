@@ -146,7 +146,7 @@
 
                                                                     <div id="skill-list">
 
-                                                                        <select id="select-skill" data-actions-box="true" class="selectborder selectpicker" name="skill-list" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> ';
+                                                                        <select id="select-skill" data-actions-box="true" multiple class="form-control selectpicker" name="skill-list" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> ';
                                                                         while($row = mysqli_fetch_array($result)){
                                                                             echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
                                                                         }
@@ -208,7 +208,9 @@
                                                                          event.preventDefault();
                                                                          if($('#select-skill').val() != '')
                                                                          {
-                                                                            console.log($('#select-skill').val())
+                                                                             var data = $('#select-skill').val();
+                                                                             
+                                                                            // console.log(data);
                                                                          }
                                                                          else
                                                                          {
