@@ -184,13 +184,9 @@
                     <li>
                       <a href="std-add-activity-form.php" > แบบฟอร์มขอเข้าร่วมกิจกรรม </a></li>
                       <li><a href="index-it.php?view=ww" > แบบฟอร์มขอเพิ่มผลงาน </a></li>
-                      <li><a href="profile-data-form.php" > ขอประวัติข้อมูลผลงาน </a></li>
                       <li><a href="index-it.php?view=wwww" > ตรวจสอบคำขอผลงาน </a></li>
                     </ul> 
                     <li><a href="std-my-portfolio.php" class=\"w3-bar-item w3-button\"><font style=\"font-size:14px\">ผลงานของฉัน</font></a>
-                    <li><a href="student-add-subject.php" class=\"w3-bar-item w3-button\"><font style=\"font-size:14px\">เพิ่มวิชาเรียน</font></a>
-
-                    <li><a href=\"#\" class=\"w3-bar-item w3-button\"><font style=\"font-size:14px\">ใบสัมฤทธิบัตร</font></a>
                     <li><a href="resume-form.php" class=\"w3-bar-item w3-button\"><font style=\"font-size:14px\">Resume</font></a>
 
                   </li>

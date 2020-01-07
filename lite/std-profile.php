@@ -211,10 +211,10 @@
 
                    
                     var tr_str = "<tr>" +
-                    "<td  style='color:black;'>" + actdate + "</td> " +
-                    "<td  style='color:black;width:500px;'>" + actname + "</td> " +
-                    "<td  style='color:black;width:500px;'>" + acttype + "</td> " +
-                    "<td  style='color:black;width:500px;'>" + skill + "</td> " +
+                    "<td  style=''>" + actdate + "</td> " +
+                    "<td  style='width:500px;'>" + actname + "</td> " +
+                    "<td  style='width:500px;'>" + acttype + "</td> " +
+                    "<td  style='width:500px;'>" + skill + "</td> " +
                     "</tr>";
                     console.log('dd',tr_str);
                     $("#tbd").append(tr_str);

@@ -117,7 +117,6 @@
 						</ul>
                 </li>
                 
-                <li><a class=\"w3-bar-item w3-button\"><font style=\"font-size:14px\"> | | </font></a></li>
                 <li><a href=\"std-profile.php\" class=\"w3-bar-item w3-button\"><font style=\"font-size:14px;color:blue;\">[ " . $_SESSION["username"] . " ]</font></a></li>
                 <li><a href=\"check-logout.php\" class=\"w3-bar-item w3-button\"><font style=\"font-size:14px\">Logout</font></a></li>
                 
