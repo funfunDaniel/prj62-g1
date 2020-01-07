@@ -88,3 +88,16 @@ function getSkillData(){
 
     }
 
+function addActivity(){
+    $.ajax({
+        type: "POST",
+        url: "../check-prof-add-activity.php",
+        data: $("#add-act-Form").serialize(),
+        dataType: 'JSON',
+        success: function(resp){
+            alert("Helloooo");
+            console.log(resp);
+        }
+    });
+}
+

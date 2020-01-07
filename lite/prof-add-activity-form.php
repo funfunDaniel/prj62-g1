@@ -74,7 +74,7 @@
                                                                     <label for="activity-type">ประเภทกิจกรรม</label>
                                                                 </td>
                                                                 <td>
-                                                                    <select name="acttype" class="selectborder" id="sel1">
+                                                                    <!-- <select name="acttype" class="selectborder" id="sel1">
                                                                         <option value="none">----- เลือกประเภทกิจกรรม -----</option>
                                                                         <option value="university">มหาวิทยาลัย</option>
                                                                         <option value="school">สำนักวิชา</option>
@@ -88,7 +88,7 @@
                                                                     echo '
                                                                     <div id="dep-list">
 
-                                                                        <select class="form-control " name="dep-list" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> ';
+                                                                        <select class="form-control " name="acttype" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> ';
                                                                         while($row = mysqli_fetch_array($result)){
                                                                             echo '<option value="'.$row['id'].'">'.$row['department'].'</option>';
                                                                         }
@@ -124,179 +124,9 @@
                                                             </td>
                                                         </tr>
 
-                                                        <tr>
-                                                        <td>
-                                                        </td>
-                                                        <td>
-                                                            <button type="button" class="btn btn-primary" id="btnweightskill">เพิ่มน้ำหนักทักษะ</button>
-                                                        </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                            <label for="skills">ทักษะที่เกี่ยวข้อง*</label>
-                                                                
-                                                            </td>
-                                                            <td>
-                                                                <?php 
-                                                                include 'config.php';
-                                                                $sql = "SELECT * FROM `resume_skill`";
-                                                                $result = mysqli_query($conn,$sql);
-                                                                if (mysqli_num_rows($result) > 0){
-                                                                    echo '
-
-                                                                    <div id="skill-list">
-
-                                                                        <select id="select-skill" data-actions-box="true" multiple class="form-control selectpicker" name="skill-list" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> ';
-                                                                        while($row = mysqli_fetch_array($result)){
-                                                                            echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
-                                                                        }
-                                                                        echo '</select>
-                                                                    </div>
-                                                                    
-                                                                    ';
-                                                                }else{
-                                                                    echo '
-                                                                    <div id="skill-list">
-
-                                                                        <select class="form-control " name="skill-list" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> 
-                                                                        <option value="no-dep">ไม่มีทักษะ</option></select>
-                                                                    </div>
-                                                                    ';
-                                                                }
-                                                                echo '
-                                                                <div id="insert-success"></div>
-                                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-                                                                <div class="modal-dialog" role="document">
-                                                                    <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">เพิ่มทักษะ</h5>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <input name="skill-name" id="skill-name" type="text" class="form-control" id="usr">
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                                                                        <button type="button" class="btn btn-primary" id="btnaddskill">บันทึก</button>
-                                                                    </div>
-                                                                    </div>
-                                                                </div>
-                                                                    </div>
-                                                                ';
-                                                                ?>
-
-                                                                <!-- <div>
-                                                                        เพิ่มทักษะได้ <button type="button" class="btn btn-link" id="add-skill" data-toggle="modal" data-target="#exampleModal">ที่นี่.</button>
-                                                                    </div> -->
-
-                                                                <script>
-                                                                        $('.selectpicker').selectpicker();
-
-                                                                $(document).ready(function(){
-                                                                    // $("#frmaddskill").on("submit", function(event){
-                                                                    //     event.preventDefault();
-                                                                    //     if($("#skill-name").val())
-                                                                    //     {
-                                                                    //         alert('Input is required')
-                                                                    //     }
-                                                                    // });
-                                                                    $("#btnweightskill").click(function(){
-                                                                        // console.log('weightskill');
-                                                                         event.preventDefault();
-                                                                         if($('#select-skill').val() != '')
-                                                                         {
-                                                                             var data = $('#select-skill').val();
-                                                                             
-                                                                            // console.log(data);
-                                                                         }
-                                                                         else
-                                                                         {
-                                                                            alert('Please select skill');
-                                                                            return false;
-                                                                         }
-                                                                    });
-
-                                                                    $("#btnaddskill").click(function(){
-                                                                        if($("#skill-name").val() == "")
-                                                                        {
-                                                                            alert('Input is required')
-                                                                        }
-                                                                        else
-                                                                        {
-                                                                            $.ajax({
-                                                                                url: "check-prof-add-skill.php",
-                                                                                method: "POST",
-                                                                                data: $('#skill-name').serialize(),
-                                                                                success: function(data) 
-                                                                                {
-                                                                                    if(data.status > 0){
-                                                                                        alert("เพิ่มทักษะสำเร็จ")
-                                                                                    // console.log("1111111")
-                                                                                    }
-                                                                                    else
-                                                                                    {
-                                                                                        alert("เพิ่มทักษะไม่สำเร็จ")
-
-                                                                                    }
-                                                                                    
-                                                                                    // var item = parseJSON(data)
-                                                                                    // console.log(data)
-                                                                                    
-                                                                                    window.location.href="prof-add-activity-form.php"
-                                                                                    // alert('Add skill success')
-                                                                                    // $('#exampleModal').modal('hide');
-                                                                        //             Swal.fire(
-                                                                        // 'Good job!',
-                                                                        // 'You clicked the button!',
-                                                                        // 'success'
-                                                                        // )
-                                                                                    // $('#insert-succหess').html(data)
-
-                                                                                }
-                                                                            })
-                                                                        }
-                                                                        // alert($("#skill-name").val())
-                                                                        // console.log($("#skill-name").serialize())
-                                                                        // $.ajax({
-                                                                        //     type: "POST",
-                                                                        //     url: "check-prof-add-skill.php",
-                                                                        //     data: $("#frmaddskill").serialize(),
-                                                                        //     success: function(result){
-                                                                        //         // alert('add skill success')
-                                                                        //     }
-                                                                        // })
-
-                                                                    });
-                                                                    // $("#add-skill").click(function(){
-                                                                    //     alert('add')
-
-                                                                    //     Swal.fire(
-                                                                    //     'Good job!',
-                                                                    //     'You clicked the button!',
-                                                                    //     'success'
-                                                                    //     )
-
-                                                                    //     const { value: email } = await Swal.fire({
-                                                                    //     title: 'Input email address',
-                                                                    //     input: 'email',
-                                                                    //     inputPlaceholder: 'Enter your email address'
-                                                                    //     })
-
-                                                                    //     if (email) {
-                                                                    //     Swal.fire(`Entered email: ${email}`)
-                                                                    //     }
-
-                                                                       
-
-                                                                    // })
-                                                                })
-                                                                </script>
-
-                                                            </td>
-                                                        </tr>
+                                                        
+                                                        
+                                                        
                                                         <tr>
                                                             <td>
                                                                 <label for="comment">รายละเอียด</label>
@@ -345,67 +175,264 @@
                                                             </td>
 
                                                         </tr>
+
+                                                        <tr>
+                                                                <td>
+                                                                    <label for="skills">ทักษะที่เกี่ยวข้อง NEW</label>
+                                                                </td>
+                                                                <td>
+                                                                    <div class='table-responsive'>
+                                                                        <table class='table table-bordered' id='add_skill_table'>
+                                                                            <tbody>
+                                                                            <tr>
+                                                                                <th>ชื่อทักษะ</th>
+                                                                                <th>น้ำหนัก(ร้อยละ)</th>
+                                                                            <tr>
+                                                                            <tr>
+                                                                                <td id='skill_list' class="item_skill">
+                                                                                    <?php
+                                                                                    include 'config.php';
+                                                                                    $sql = "SELECT * FROM `resume_skill`";
+                                                                                    $result = mysqli_query($conn,$sql);
+                                                                                    if (mysqli_num_rows($result) > 0){
+                                                                                        echo '
+                    
+                    
+                                                                                            <select id="select-skill-new" class="form-control" style="width: 100%;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> ';
+                                                                                            while($row = mysqli_fetch_array($result)){
+                                                                                                // echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+                                                                                                echo '<option value="'.$row['name'].'", label="'.$row['name'].'">'.$row['name'].'</option>';
+                                                                                            }
+                                                                                            echo '</select>
+                                                                                        
+                                                                                        ';
+                                                                                    }else{
+                                                                                        echo '
+                                                                                        <div id="skill-list">
+                    
+                                                                                            <select class="form-control " name="skill-list" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> 
+                                                                                            <option value="no-dep">ไม่มีทักษะ</option></select>
+                                                                                        </div>
+                                                                                        ';
+                                                                                    }
+                                                                                    ?>
+                                                                                </td>
+                                                                                <td contenteditable="true" class="item_weight">22</td>
+                                                                            <tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </td>
+                                                        </tr>
+
+
+                                                        <tr>
+                                                            <td>
+                                                            <label for="skills">ทักษะที่เกี่ยวข้อง*</label>
+                                                                
+                                                            </td>
+                                                            <td>
+                                                                <?php 
+                                                                include 'config.php';
+                                                                $sql = "SELECT * FROM `resume_skill`";
+                                                                $result = mysqli_query($conn,$sql);
+                                                                if (mysqli_num_rows($result) > 0){
+                                                                    echo '
+
+                                                                    <div id="skill-list">
+
+                                                                        <select id="select-skill" multiple class="form-control" style="width: 100%;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> ';
+                                                                        while($row = mysqli_fetch_array($result)){
+                                                                            // echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
+                                                                            echo '<option value="'.$row['name'].'", label="'.$row['name'].'">'.$row['name'].'</option>';
+                                                                        }
+                                                                        echo '</select>
+                                                                    </div>
+                                                                    
+                                                                    ';
+                                                                }else{
+                                                                    echo '
+                                                                    <div id="skill-list">
+
+                                                                        <select class="form-control " name="skill-list" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> 
+                                                                        <option value="no-dep">ไม่มีทักษะ</option></select>
+                                                                    </div>
+                                                                    ';
+                                                                }
+                                                                echo '
+                                                                <div id="insert-success"></div>
+                                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                                                                <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="exampleModalLabel">เพิ่มทักษะ</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <input name="skill-name" id="skill-name" type="text" class="form-control" id="usr">
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                                                        <button type="button" class="btn btn-primary" id="btnaddskill">บันทึก</button>
+                                                                    </div>
+                                                                    </div>
+                                                                </div>
+                                                                    </div>
+                                                                ';
+                                                                ?>
+
+                                                                <script src="js/functions.js"></script>
+                                                                <script>
+                                                                $(document).ready(function(){
+                                                                    $(document).on('click','#btnSave',function(){
+                                                                        addActivity();
+                                                                    });
+                                                                    $("#btnweightskill").click(function(){
+                                                                         event.preventDefault();
+                                                                         if($('#select-skill').val() != '')
+                                                                         {
+                                                                             var data = [];
+                                                                             data = $('#select-skill').val();
+                                                                             var len = data.length;
+                                                                             $("#weight-skill-table").html('');
+                                                                             for(var i=0; i<len; i++){
+
+                                                                                var tr_str = "<tr>" +
+                                                                                    "<td align='center' class='item_skill' contenteditable='false'>" + data[i] + "</td>" +
+                                                                                    "<td contenteditable='true' class='item_weight'></td>" +
+                                                                                    "</tr>";
+                                                                                    $("#weight-skill-table").append(tr_str);
+                                                                             }
+                                                                             $("#myModal").modal('show');
+                                                                         }
+                                                                         else
+                                                                         {
+                                                                            alert('Please select skill');
+                                                                            return false;
+                                                                         }
+                                                                    });
+
+                                                                    // $("#btnaddskill").click(function(){
+                                                                    //     if($("#skill-name").val() == "")
+                                                                    //     {
+                                                                    //         alert('Input is required')
+                                                                    //     }
+                                                                    //     else
+                                                                    //     {
+                                                                    //         $.ajax({
+                                                                    //             url: "check-prof-add-skill.php",
+                                                                    //             method: "POST",
+                                                                    //             data: $('#skill-name').serialize(),
+                                                                    //             success: function(data) 
+                                                                    //             {
+                                                                    //                 if(data.status > 0){
+                                                                    //                     alert("เพิ่มทักษะสำเร็จ")
+                                                                    //                 }
+                                                                    //                 else
+                                                                    //                 {
+                                                                    //                     alert("เพิ่มทักษะไม่สำเร็จ")
+
+                                                                    //                 }
+                                                                                    
+                                                                    //                 window.location.href="prof-add-activity-form.php"
+                                                                    //             }
+                                                                    //         })
+                                                                    //     }
+
+                                                                    // });
+                                                                })
+                                                                </script>
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                            </td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-primary" id="btnweightskill">เพิ่มน้ำหนักทักษะ</button>
+                                                            </td>
+                                                        </tr>
+                                                        
                                                     </tbody>
                                                 </table>
                                             </form>
 
+                                            
+
                                             <!-- <script>
                                                 $(document).ready(function(){
-                                                    $("#btnSave").click(function(){
-                                                        // alert('btnSave')
-                                                        // Swal.fire(
-                                                        //             'Good job!',
-                                                        //             'You clicked the button!',
-                                                        //             'success'
-                                                        //             )
-                                                        $.ajax({
-                                                            type: "POST",
-                                                            url: "check-prof-add-activity.php",
-                                                            data: $("#add-act-Form").serialize(),
-                                                            success: function(result){
-                                                                
-                                                                if(result.status == 1)
-                                                                {
-                                                                    alert(result.status)
-
-                                                                    // Swal.fire(
-                                                                    // 'Good job!',
-                                                                    // 'You clicked the button!',
-                                                                    // 'success'
-                                                                    // )
-
-                                                                    // Swal.fire({
-                                                                    // title: "บันทึกสำเร็จ",
-                                                                    // icon: "success",
-                                                                    // showCancelButton: false,
-                                                                    // confirmButtonColor: "#3085d6",
-                                                                    // confirmButtonText: "OK"
-                                                                    // }).then((result) => {
-                                                                    // if (result.value) {
-                                                                    //     window.location.href="prof-add-activity-form.php"
-                                                                    // }
-                                                                    // })
-
-                                                                    // alert('result.message');
-                                                                }
-                                                                else
-                                                                {
-                                                                    // Swal.fire(
-                                                                    // 'Oop...',
-                                                                    // 'You clicked the button!',
-                                                                    // 'error'
-                                                                    // )
-                                                                    alert(result.status);
-                                                                }
-                                                            }
-                                                            error: function(err){
-                                                                console.log(err)
-                                                            }
-                                                        });
-                                                    });
+                                                    
                                                 });
                                             </script> -->
                                                 <!-- </div> -->
+                                                <div class="modal fade" id="myModal">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <!-- Modal Header -->
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title">เพิ่มน้ำหนักทักษะ</h4>
+                                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                            </div>
+                                                            <!-- Modal body --> 
+                                                            <form id="data-form" name="data-form">               
+                                                            <div class="modal-body">
+                                                                <div id="weight-skill-form">
+                                                                    <table class="table table-bordered" id="weight-table">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th>ชื่อทักษะ</th>
+                                                                            <th>น้ำหนัก(ร้อยละ)</th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody id="weight-skill-table"></tbody>
+                                                                    </table>
+                                                                    <small>ทุกทักษะรวมกันได้ ร้อยละ 100</small>
+                                                                </div>
+                                                                <!-- <div class="form-group">
+                                                                <label for="dep">หน่วยงาน:</label>
+                                                                <input type="text" class="form-control" id="dep" name="dep">
+                                                                </div>
+                                                                <div class="form-group">
+                                                                <label for="aff">ต้นสังกัด:</label>
+                                                                <input type="text" class="form-control" id="aff" name="aff">
+                                                                </div>     -->
+                                                            </div>
+                                                            </form>
+                                                            <!-- Modal footer -->
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-info" id="btnUpdateWeight">บันทึกข้อมูล</button>
+                                                                <button type="button" class="btn btn-danger" data-dismiss="modal">ปิดหน้าต่าง</button>
+                                                                <script>
+                                                                    $("#btnUpdateWeight").click(function(){
+                                                                        console.log("btnUpdateWeight clicked!!")
+                                                                        var item_skill = [];
+                                                                        var item_weight = [];
+
+                                                                        $('.item_skill').each(function(){
+                                                                            item_skill.push($('.item_skill').text());
+                                                                        });
+                                                                        $('.item_weight').each(function(){
+                                                                            item_weight.push($('.item_weight').text());
+                                                                        });
+
+                                                                        $.ajax({
+                                                                            url:"./MySQL/professor/weight-skill.php",
+                                                                            method: "POST",
+                                                                            data: {item_skill:item_skill, item_weight:item_weight},
+                                                                            success: function(data)
+                                                                            {
+                                                                                console.log(data)
+                                                                            }
+                                                                        });
+                                                                    });
+                                                                </script>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                 </div>
                             </div>
                         </div>
@@ -415,14 +442,7 @@
         </div>
         <?php include('footer.php')?>
         <?php include('import-javascript.php')?>
-        <!-- <script src="tail.select-full.min.js"></script> -->
         <script src="js/index.js">
-
-        
-
-                // tail.select('#select-skill', {
-                //     search: true
-                // })
         </script>
     </body>
 </html>
