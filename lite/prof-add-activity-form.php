@@ -181,13 +181,15 @@
                                                                     <label for="skills">ทักษะที่เกี่ยวข้อง NEW</label>
                                                                 </td>
                                                                 <td>
-                                                                    <div class='table-responsive'>
+                                                                    <!-- <div class='table-responsive'> -->
                                                                         <table class='table table-bordered' id='add_skill_table'>
-                                                                            <tbody>
+                                                                        <thead>
                                                                             <tr>
                                                                                 <th>ชื่อทักษะ</th>
                                                                                 <th>น้ำหนัก(ร้อยละ)</th>
                                                                             <tr>
+                                                                        </thead>
+                                                                            <tbody>
                                                                             <tr>
                                                                                 <td id='skill_list' class="item_skill">
                                                                                     <?php
@@ -221,7 +223,10 @@
                                                                             <tr>
                                                                             </tbody>
                                                                         </table>
-                                                                    </div>
+                                                                        <div>
+                                                                                    <button type='button' name='add' id='add' class='btn btn-success btn-xs'>+</button>
+                                                                        </div>
+                                                                    <!-- </div> -->
                                                                 </td>
                                                         </tr>
 
