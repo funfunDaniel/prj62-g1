@@ -417,7 +417,6 @@
                                                                         $('.item_weight').each(function(){
                                                                             item_weight.push($('.item_weight').text());
                                                                         });
-
                                                                         $.ajax({
                                                                             url:"./MySQL/professor/weight-skill.php",
                                                                             method: "POST",
