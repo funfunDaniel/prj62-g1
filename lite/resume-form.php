@@ -23,26 +23,13 @@
             <link rel="stylesheet" href="./css/stylesheet1.css">
             <link rel="stylesheet" href="./css/stylesheet2.css">
             <link rel="stylesheet" type="text/css" href="./css/print.css">
-            <!-- <link rel="stylesheet" href="./css/stylesheet6.css"> -->
             
             <script src="showAll.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <?php  include('header.php') ?>
-        <style>
-        .printme {
-        display: none;
-    }
-    @media print {
-        .no-printme  {
-            display: none;
-        }
-        .printme  {
-            display: block;
-        }
-    }
-        </style>
+       
     </head>
    
     <body class="fix-header fix-sidebar card-no-border logo-center">
@@ -193,10 +180,7 @@
                                     </div>
                                     <div class="form-row">  
                                     <input class="btn btn-warning" style="width:150px" id="btn-Preview-Image" type="button" value="Preview" />   
-                                    <!-- <input id="btn-Convert-Html2Image" type="button" value="Download" />   -->
                                     <a class="btn btn-primary" style="width:150px" id="btn-Convert-Html2Image" href="#"> Download </a> 
-                                     <!-- <button type="button" class="btn btn-primary" style="width:150px" id="btn-Convert-Html2Image" >Save</button> -->
-                                    <!-- <button type="button" class="btn btn-warning" style="width:150px">Cancle</button>                                  -->
                                     </div>
                                     <div id="previewImage"></div> 
                                      
@@ -217,43 +201,42 @@
         
         
 
-                
-        <script src="selectResume.js"></script>
+        <?php include('selectResume.php') ?>
+        <!-- <script src="selectResume.js"></script> -->
 
         <script>
-        var resumename
-        function clickPreview(txt){
-            if(txt.name == "resume-blue"){	
-                getQRcode2()
-                showResumeblue();
-                resumename = "resume-blue";
-                cleartext()
-            }else if(txt.name == "resume-brown"){
-                getQRcode2()
-                showResumebrown();
-                resumename = "resume-brown";
-                cleartext()
-            }else if(txt.name == "resume-pink"){
-                getQRcode2()
-                showResumepink();
-                resumename = "resume-pink";
-                cleartext()
-            }else if(txt.name == "resume-red"){
-                getQRcode()
-                showResumered();
-                resumename = "resume-red";
-                cleartext()
-            }else{
-                getQRcode2()
-                showResumebrown();
-                resumename = "resume-brown";
-                cleartext()
-            }
-        
-        }     
-        function onchangeResume(val){
-              
-
+            var resumename
+            function clickPreview(txt){
+                if(txt.name == "resume-blue"){	
+                    resumename = "resume-blue";
+                    showResumeblue();
+                    getQRcode2()
+                    cleartext()
+                }else if(txt.name == "resume-brown"){
+                    resumename = "resume-brown";
+                    showResumebrown();
+                    getQRcode2()
+                    cleartext()
+                }else if(txt.name == "resume-pink"){
+                    resumename = "resume-pink";
+                    showResumepink();
+                    getQRcode2()
+                    cleartext()
+                }else if(txt.name == "resume-red"){
+                    resumename = "resume-red";
+                    showResumered();
+                    getQRcode()
+                    cleartext()
+                }else{
+                    resumename = "resume-brown";
+                    showResumebrown();
+                    getQRcode2()
+                    cleartext()
+                }
+            
+            }     
+            
+            function onchangeResume(val){
                 var educationyear1 = document.getElementById("inputtime1").value;
                 var place1 = document.getElementById("inputplace1").value;
                 var education1 = document.getElementById("inputeducation1").value;
@@ -273,29 +256,26 @@
                 var refmail = document.getElementById("inputrefmail").value;
 
                  
-                    document.getElementById("university1").innerHTML = educationyear1;
-                    document.getElementById("university2").innerHTML = place1;
-                    document.getElementById("university3").innerHTML = education1;
+                document.getElementById("university1").innerHTML = educationyear1;
+                document.getElementById("university2").innerHTML = place1;
+                document.getElementById("university3").innerHTML = education1;
 
-                    document.getElementById("matthayom1").innerHTML = educationyear2;
-                    document.getElementById("matthayom2").innerHTML = place2;
-                    document.getElementById("matthayom3").innerHTML = education2;
+                document.getElementById("matthayom1").innerHTML = educationyear2;
+                document.getElementById("matthayom2").innerHTML = place2;
+                document.getElementById("matthayom3").innerHTML = education2;
 
-                    document.getElementById("prathom1").innerHTML = educationyear3;
-                    document.getElementById("prathom2").innerHTML = place3;
-                    document.getElementById("prathom3").innerHTML = education3;
+                document.getElementById("prathom1").innerHTML = educationyear3;
+                document.getElementById("prathom2").innerHTML = place3;
+                document.getElementById("prathom3").innerHTML = education3;
 
-                    document.getElementById("refname2").innerHTML = refname;
-                    document.getElementById("refposition2").innerHTML = refposition;
-                    document.getElementById("refadd2").innerHTML = refadd;
-                    document.getElementById("reftel2").innerHTML = reftel;
-                    document.getElementById("refmail2").innerHTML = refmail;
+                document.getElementById("refname2").innerHTML = refname;
+                document.getElementById("refposition2").innerHTML = refposition;
+                document.getElementById("refadd2").innerHTML = refadd;
+                document.getElementById("reftel2").innerHTML = reftel;
+                document.getElementById("refmail2").innerHTML = refmail;
   
-        }
-        function cleartext()
-            {
-             
-                
+            }
+            function cleartext(){
                 document.getElementById('inputtime1').value = '';
                 document.getElementById('inputplace1').value = '';
                 document.getElementById('inputeducation1').value = '';
@@ -314,57 +294,37 @@
                 document.getElementById('inputreftel').value = '';
                 document.getElementById('inputrefmail').value = '';
             }
-        </script>
-         <script src="../assets/jsPDF/jspdf.debug.js"></script>
-         <script type="text/javascript">
-
-// $(document).ready(function() {
-    
-    new QRCode(document.getElementById("qrcode"),{
-            text: "https://www.ninenik.com",
-            width: 100,
-            height: 100,
-            colorDark : "#000",
-            colorLight : "#fff",
-            correctLevel : QRCode.CorrectLevel.M        
-            });
-// })
-</script>
+        </script>        
         <script src="../assets/jsPDF/examples/js/html2canvas.js"></script>
-
         <script> 
-                    $(document).ready(function() { 
-          
-                    // Global variable 
-                    var element = $("#divResume");  
-                    
-                    // Global variable 
-                    var getCanvas;  
-
-                    $("#btn-Preview-Image").on('click', function() { 
-                        html2canvas(element, { 
-                            onrendered: function(canvas) { 
-                                $("#previewImage").html(canvas); 
-                                getCanvas = canvas; 
-                            } 
-                        }); 
-                    }); 
-
-                    $("#btn-Convert-Html2Image").on('click', function() { 
-                        var imgageData =  
-                            getCanvas.toDataURL("image/png"); 
-                        
-                        // Now browser starts downloading  
-                        // it instead of just showing it 
-                        var newData = imgageData.replace( 
-                        /^data:image\/png/, "data:application/octet-stream"); 
-                        
-                        $("#btn-Convert-Html2Image").attr( 
-                        "download", "MyResume.png").attr( 
-                        "href", newData); 
-                    }); 
+            $(document).ready(function() { 
+            // Global variable 
+            var element = $("#divResume");      
+            // Global variable 
+            var getCanvas;  
+            $("#btn-Preview-Image").on('click', function() { 
+                html2canvas(element, { 
+                    onrendered: function(canvas) { 
+                        $("#previewImage").html(canvas); 
+                        getCanvas = canvas; 
+                    } 
                 }); 
-            </script> 
+            }); 
+
+            $("#btn-Convert-Html2Image").on('click', function() { 
+                var imgageData =  
+                    getCanvas.toDataURL("image/png"); 
+                // Now browser starts downloading  
+                // it instead of just showing it 
+                var newData = imgageData.replace( 
+                /^data:image\/png/, "data:application/octet-stream"); 
+                        
+                $("#btn-Convert-Html2Image").attr( 
+                "download", "MyResume.png").attr( 
+                "href", newData); 
+                }); 
+            }); 
+        </script> 
 
         <?php include('footer.php')?>
         <?php include('import-javascript.php')?>
