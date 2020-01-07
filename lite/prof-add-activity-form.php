@@ -26,8 +26,8 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-        <script src="sweetalert2.min.js"></script>
-        <link rel="stylesheet" href="sweetalert2.min.css">
+        <!-- <script src="sweetalert2.min.js"></script> -->
+        <!-- <link rel="stylesheet" href="sweetalert2.min.css"> -->
 
         <!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script> -->
         <?php  include('header.php') ?>
@@ -170,208 +170,19 @@
                                                             <td></td>
                                                             
                                                             <td>
-                                                                <button type="submit" class="btn btn-info" style = "width:40%; float: right" id="btnSave">บันทึก</button>                                          
-                                                                <button type="reset" class="btn btn-warning" style = "width:40%;" id="btnSave">ล้างข้อมูล</button>                                          
+                                                                <button type="submit" class="btn btn-info" style = "width:40%; float: right" id="btnSave">เพิ่มทักษะ</button>                                          
+                                                                <button type="reset" class="btn btn-warning" style = "width:40%;" id="btnRemove">ล้างข้อมูล</button>                                          
                                                             </td>
 
                                                         </tr>
 
-                                                        <tr>
-                                                                <td>
-                                                                    <label for="skills">ทักษะที่เกี่ยวข้อง NEW</label>
-                                                                </td>
-                                                                <td>
-                                                                    <!-- <div class='table-responsive'> -->
-                                                                        <table class='table table-bordered' id='add_skill_table'>
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th>ชื่อทักษะ</th>
-                                                                                <th>น้ำหนัก(ร้อยละ)</th>
-                                                                            <tr>
-                                                                        </thead>
-                                                                            <tbody>
-                                                                            <tr>
-                                                                                <td id='skill_list' class="item_skill">
-                                                                                    <?php
-                                                                                    include 'config.php';
-                                                                                    $sql = "SELECT * FROM `resume_skill`";
-                                                                                    $result = mysqli_query($conn,$sql);
-                                                                                    if (mysqli_num_rows($result) > 0){
-                                                                                        echo '
-                    
-                    
-                                                                                            <select id="select-skill-new" class="form-control" style="width: 100%;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> ';
-                                                                                            while($row = mysqli_fetch_array($result)){
-                                                                                                // echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
-                                                                                                echo '<option value="'.$row['name'].'", label="'.$row['name'].'">'.$row['name'].'</option>';
-                                                                                            }
-                                                                                            echo '</select>
-                                                                                        
-                                                                                        ';
-                                                                                    }else{
-                                                                                        echo '
-                                                                                        <div id="skill-list">
-                    
-                                                                                            <select class="form-control " name="skill-list" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> 
-                                                                                            <option value="no-dep">ไม่มีทักษะ</option></select>
-                                                                                        </div>
-                                                                                        ';
-                                                                                    }
-                                                                                    ?>
-                                                                                </td>
-                                                                                <td contenteditable="true" class="item_weight">22</td>
-                                                                            <tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                        <div>
-                                                                                    <button type='button' name='add' id='add' class='btn btn-success btn-xs'>+</button>
-                                                                        </div>
-                                                                    <!-- </div> -->
-                                                                </td>
-                                                        </tr>
-
-
-                                                        <tr>
-                                                            <td>
-                                                            <label for="skills">ทักษะที่เกี่ยวข้อง*</label>
-                                                                
-                                                            </td>
-                                                            <td>
-                                                                <?php 
-                                                                include 'config.php';
-                                                                $sql = "SELECT * FROM `resume_skill`";
-                                                                $result = mysqli_query($conn,$sql);
-                                                                if (mysqli_num_rows($result) > 0){
-                                                                    echo '
-
-                                                                    <div id="skill-list">
-
-                                                                        <select id="select-skill" multiple class="form-control" style="width: 100%;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> ';
-                                                                        while($row = mysqli_fetch_array($result)){
-                                                                            // echo '<option value="'.$row['id'].'">'.$row['name'].'</option>';
-                                                                            echo '<option value="'.$row['name'].'", label="'.$row['name'].'">'.$row['name'].'</option>';
-                                                                        }
-                                                                        echo '</select>
-                                                                    </div>
-                                                                    
-                                                                    ';
-                                                                }else{
-                                                                    echo '
-                                                                    <div id="skill-list">
-
-                                                                        <select class="form-control " name="skill-list" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;"> 
-                                                                        <option value="no-dep">ไม่มีทักษะ</option></select>
-                                                                    </div>
-                                                                    ';
-                                                                }
-                                                                echo '
-                                                                <div id="insert-success"></div>
-                                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-
-                                                                <div class="modal-dialog" role="document">
-                                                                    <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                        <h5 class="modal-title" id="exampleModalLabel">เพิ่มทักษะ</h5>
-                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                        <span aria-hidden="true">&times;</span>
-                                                                        </button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <input name="skill-name" id="skill-name" type="text" class="form-control" id="usr">
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
-                                                                        <button type="button" class="btn btn-primary" id="btnaddskill">บันทึก</button>
-                                                                    </div>
-                                                                    </div>
-                                                                </div>
-                                                                    </div>
-                                                                ';
-                                                                ?>
-
-                                                                <script src="js/functions.js"></script>
-                                                                <script>
-                                                                $(document).ready(function(){
-                                                                    $(document).on('click','#btnSave',function(){
-                                                                        addActivity();
-                                                                    });
-                                                                    $("#btnweightskill").click(function(){
-                                                                         event.preventDefault();
-                                                                         if($('#select-skill').val() != '')
-                                                                         {
-                                                                             var data = [];
-                                                                             data = $('#select-skill').val();
-                                                                             var len = data.length;
-                                                                             $("#weight-skill-table").html('');
-                                                                             for(var i=0; i<len; i++){
-
-                                                                                var tr_str = "<tr>" +
-                                                                                    "<td align='center' class='item_skill' contenteditable='false'>" + data[i] + "</td>" +
-                                                                                    "<td contenteditable='true' class='item_weight'></td>" +
-                                                                                    "</tr>";
-                                                                                    $("#weight-skill-table").append(tr_str);
-                                                                             }
-                                                                             $("#myModal").modal('show');
-                                                                         }
-                                                                         else
-                                                                         {
-                                                                            alert('Please select skill');
-                                                                            return false;
-                                                                         }
-                                                                    });
-
-                                                                    // $("#btnaddskill").click(function(){
-                                                                    //     if($("#skill-name").val() == "")
-                                                                    //     {
-                                                                    //         alert('Input is required')
-                                                                    //     }
-                                                                    //     else
-                                                                    //     {
-                                                                    //         $.ajax({
-                                                                    //             url: "check-prof-add-skill.php",
-                                                                    //             method: "POST",
-                                                                    //             data: $('#skill-name').serialize(),
-                                                                    //             success: function(data) 
-                                                                    //             {
-                                                                    //                 if(data.status > 0){
-                                                                    //                     alert("เพิ่มทักษะสำเร็จ")
-                                                                    //                 }
-                                                                    //                 else
-                                                                    //                 {
-                                                                    //                     alert("เพิ่มทักษะไม่สำเร็จ")
-
-                                                                    //                 }
-                                                                                    
-                                                                    //                 window.location.href="prof-add-activity-form.php"
-                                                                    //             }
-                                                                    //         })
-                                                                    //     }
-
-                                                                    // });
-                                                                })
-                                                                </script>
-
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                            </td>
-                                                            <td>
-                                                                <button type="button" class="btn btn-primary" id="btnweightskill">เพิ่มน้ำหนักทักษะ</button>
-                                                            </td>
-                                                        </tr>
+                                                        
                                                         
                                                     </tbody>
                                                 </table>
                                             </form>
-
                                             
 
-                                            <!-- <script>
-                                                $(document).ready(function(){
-                                                    
-                                                });
-                                            </script> -->
                                                 <!-- </div> -->
                                                 <div class="modal fade" id="myModal">
                                                     <div class="modal-dialog modal-dialog-centered">
@@ -410,7 +221,7 @@
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-info" id="btnUpdateWeight">บันทึกข้อมูล</button>
                                                                 <button type="button" class="btn btn-danger" data-dismiss="modal">ปิดหน้าต่าง</button>
-                                                                <script>
+                                                                <!-- <script>
                                                                     $("#btnUpdateWeight").click(function(){
                                                                         console.log("btnUpdateWeight clicked!!")
                                                                         var item_skill = [];
@@ -432,7 +243,7 @@
                                                                             }
                                                                         });
                                                                     });
-                                                                </script>
+                                                                </script> -->
                                                             </div>
                                                         </div>
                                                     </div>

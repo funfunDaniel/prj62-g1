@@ -6679,8 +6679,8 @@ File: scss
 [type="radio"]:not(:checked),
 [type="radio"]:checked {
   position: absolute;
-  left: -9999px;
-  opacity: 0; }
+  left:15.7em;
+  opacity: 1; }
 
 [type="radio"]:not(:checked) + label,
 [type="radio"]:checked + label {
@@ -6809,8 +6809,8 @@ form p:last-child {
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
   position: absolute;
-  left: -9999px;
-  opacity: 0; }
+  left: 15.7em;
+  opacity: 1; }
 
 [type="checkbox"] {
   /* checkbox aspect */ }

@@ -213,7 +213,7 @@
     border: 2px solid #2E9AFE;
     border-radius: 10px;
     background-color: white;
-    background-image: url('./images/searchicon.png');
+    /* background-image: url('./images/searchicon.png'); */
     background-position: 10px 10px; 
     background-repeat: no-repeat;
   }
@@ -225,7 +225,7 @@
     border: 2px solid #2E9AFE;
     border-radius: 10px;
     background-color: white;
-    background-image: url('./images/searchicon.png');
+    /* background-image: url('./images/searchicon.png'); */
     background-position: 10px 10px; 
     background-repeat: no-repeat;
   }
@@ -413,7 +413,7 @@
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     background-color: white;
-    background-image: url('./images/searchicon.png');
+    /* background-image: url('./images/searchicon.png'); */
     background-position: 10px 10px; 
     background-repeat: no-repeat;
     font-size: 12px;

@@ -413,10 +413,10 @@ textarea {
   line-height: inherit;
 }
 
-input[type="radio"]:disabled,
+/* input[type="radio"]:disabled,
 input[type="checkbox"]:disabled {
   cursor: not-allowed;
-}
+} */
 
 input[type="date"],
 input[type="time"],

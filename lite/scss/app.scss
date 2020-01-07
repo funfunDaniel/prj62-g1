@@ -1695,7 +1695,7 @@ Checkbox
     input[type="checkbox"]:disabled + label {
         &::before {
             background-color: $light;
-            cursor: not-allowed;
+            // cursor: not-allowed;
         }
     }
 }
@@ -1889,7 +1889,7 @@ Radios
     }
     input[type="radio"]:disabled + label {
         &::before {
-            cursor: not-allowed;
+            // cursor: not-allowed;
         }
     }
 }

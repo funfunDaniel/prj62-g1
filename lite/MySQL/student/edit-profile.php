@@ -22,6 +22,7 @@ if(!empty($_POST) )
     if(!empty($_FILES['actpic']['name'])){
         $pic = $_FILES['actpic']['name'];
         move_uploaded_file($_FILES['actpic']['tmp_name'],"C:/xampp/htdocs/prj62_g1/it-website/import-files/user-img/" . $pic );
+        // move_uploaded_file($_FILES['actpic']['tmp_name'],"../../../import-files/user-img/" . $pic );
         $sql = "UPDATE `student` SET `firstname`='".$fname."',`lastname`='".$lname."',`address`='".$address."',`telephone`='".$phone."',`email`='".$email."',`image`='".$pic."'
         WHERE `id`=".$id."";
 

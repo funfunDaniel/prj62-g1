@@ -3,13 +3,13 @@
     // header('Content-Type: application/json');
     if(isset($_POST["item_skill"]))
     {
+        print_r($_POST["item_skill"]);
         $item_skill = $_POST["item_skill"];
         $item_weight = $_POST["item_weight"];
         $query = "";
         for($count = 0; $count<count($item_skill); $count++)
         {
             $item_skill_clean = mysqli_real_escape_string($conn, $item_skill[$count]);
-            print_r($item_skill_clean);
 
         }
     }
