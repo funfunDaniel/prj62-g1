@@ -166,10 +166,10 @@
                                
                             </div>
                             <div class="card">
-                                <table class="table table-borderless"  id="data-table2" style="font-size: 19px;">
-                                                <tr>                                                                                                   
+                                <table class="table table-hover"  id="data-table2" style="font-size: 19px;">
+                                                <tr class="table-info">                                                                                                   
                                                     <td style="width:200px;">
-                                                        วันที่
+                                                        วันที่จัดกิจกรรม
                                                     </td>
                                                     <td>
                                                         ชื่อกิจกรรม
@@ -178,8 +178,11 @@
                                                         หน่วยงาน
                                                     </td>
                                                     <td>
+                                                        สังกัด
+                                                    </td>
+                                                    <!-- <td>
                                                         ทักษะ
-                                                    </td>                                                                                                          
+                                                    </td>                                                                                                           -->
                                                 </tr>
                                                     <tbody id="tbd">
                                                     </tbody>
@@ -199,24 +202,26 @@
                 type: 'get',
                 dataType: 'JSON',
                 success: function(resp){
+                    // console.log(resp);
                    
                     var len = resp.length;
                 for(var i=0; i<len; i++){
-                    var actname = resp[i].actname;
+                    var actid = resp[i].actid;
                     var actdate = resp[i].actdate;
-                    var acttype = resp[i].acttype;
-                    var date = actdate.substring(0,4);
-                    var skill = resp[i].skillname;
+                    var actname = resp[i].actname;
+                    var depid = resp[i].depid;
+                    var depname = resp[i].depname;
+                    var affiliation = resp[i].affiliation;
 
 
                    
                     var tr_str = "<tr>" +
                     "<td  style='color:black;'>" + actdate + "</td> " +
                     "<td  style='color:black;width:500px;'>" + actname + "</td> " +
-                    "<td  style='color:black;width:500px;'>" + acttype + "</td> " +
-                    "<td  style='color:black;width:500px;'>" + skill + "</td> " +
+                    "<td  style='color:black;width:500px;'>" + depname + "</td> " +
+                    "<td  style='color:black;width:500px;'>" + affiliation + "</td> " +
                     "</tr>";
-                    console.log('dd',tr_str);
+                    // console.log('dd',tr_str);
                     $("#tbd").append(tr_str);
                 }
                     }
