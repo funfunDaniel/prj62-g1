@@ -1,7 +1,7 @@
 <?php
-
+session_start();
 include "config.php";
-
+$profid = $_SESSION['id'];
 $return_arr = array();
 
 $query = "SELECT P.id AS id,P.timestamp AS regdate, S.firstname AS firstname, S.lastname AS lastname, S.std_id AS stdid, A.name AS actname, ST.name AS statusname
@@ -9,6 +9,7 @@ FROM portfolio AS P
 LEFT JOIN student AS S ON P.std_id = S.id
 LEFT JOIN activity_new AS A ON P.act_id = A.id 
 LEFT JOIN portfolio_status AS ST ON P.status_id = ST.id 
+WHERE A.prof_id = '".$profid."'
 ORDER BY P.id";
 
 $result = mysqli_query($conn,$query);
