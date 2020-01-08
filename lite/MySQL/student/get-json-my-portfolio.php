@@ -8,7 +8,7 @@ $return_arr = array();
 
 $query = "SELECT P.id AS id, A.name AS actname, A.id AS actid, A.date AS actdate, P.location_lat As lat, P.location_long As lon
 FROM portfolio P 
-LEFT JOIN activity A ON P.act_id = A.id 
+LEFT JOIN activity_new A ON P.act_id = A.id 
 WHERE P.status_id = 1 AND P.std_id = ".$stdid."";
 
 // echo '<script>console.log("JSON")</script>';
