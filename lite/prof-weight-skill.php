@@ -79,12 +79,13 @@
                                             <script>
                                                 $(document).ready(function(){
                                                     var count = 0;
+                                                    // $('#weight').val('1');
 
                                                     $("#add").click(function(){
                                                         // console.log('test');
                                                         // console.log($('#item-skill').text());
                                                         $('#skill').val('1');
-                                                        $('#weight').val('');
+                                                        $('#weight').val('1');
                                                         $('#error_weight').text('');
                                                         $('#weight').css('border-color', '');
                                                         $('#save').text('Save');
@@ -178,16 +179,14 @@
                                                     });
 
                                                     $('#weight_skill_form').on('submit', function(event){
-                                                        // console.log("submit")
                                                         event.preventDefault();
-                                                        // console.log($('#weight_skill_form').serialize());
                                                         var count_data = 0;
                                                         $('.skill').each(function(){
                                                             count_data = count_data + 1;
                                                         });
-                                                        // console.log(count_data)
                                                         if(count_data > 0)
                                                         {
+                                                        // console.log('count_data');
                                                             var form_data = $('#weight_skill_form').serialize();
                                                             $.ajax({
                                                                 url: './MySQL/professor/weight-skill.php',
@@ -196,14 +195,18 @@
                                                                 // dataType: 'JSON';
                                                                 success: function(data)
                                                                 {
-                                                                    console.log(data);
-                                                                    alert("บันทึกข้อมูลสำเร็จ");
+                                                                    // console.log(data);
+                                                                    alert("การเพิ่มกิจกรรมเสร็จสมบูรณ์");
+                                                                    window.location.href='index-it-Student.php';
+                                                                },
+                                                                error: function(data){
+                                                                    alert("การเพิ่มกิจกรรมไม่สำเร็จ กรุณาตรวจสอบข้อมูลอีกครั้ง");
+
                                                                 }
                                                             });
                                                         }
                                                         else
                                                         {
-                                                            // $('#action_alert').html('<p>กรุณาเพิ่มทักษะ อย่างน้อย 1 ทักษะ</p>');
                                                             alert('กรุณาเพิ่มทักษะ อย่างน้อย 1 ทักษะ');
                                                         }
 
@@ -215,21 +218,19 @@
                                                 });
                                             </script>
                                             <br />
-                                            <!-- <form method="post" id="weight_skill_form" action="MySQL/professor/weight-skill.php"> -->
                                             <form method="post" id="weight_skill_form" >
                                                 <div class="table-responsive">
                                                 <?php 
                                                 if(isset($_GET['actid'])){
                                                     echo '<script>console.log('.$_GET['actid'].')</script>';
-                                                    echo '<input type="hidden" name="hidden_actid" value='.$_GET['actid'].'/>';
+                                                    echo '<input type="hidden" name="hidden_actid" value='.$_GET['actid'].'>';
                                                 }
                                                 
                                                 ?>
-                                                <!-- <input type="hidden" name="hidden_actid" value=""/> -->
                                                     <table class="table table-striped table-bordered" id="weight_data">
                                                         <tr>
                                                             <th>ชื่อทักษะ</th>
-                                                            <th>น้ำหนัก(ร้อยละ)</th>
+                                                            <th>น้ำหนัก</th>
                                                             <th>แก้ไข</th>
                                                             <th>ลบ</th>
                                                         </tr>
@@ -280,7 +281,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>กรอกน้ำหนัก(ร้อยละ)<label>
-                                                <input class="form-control" id="weight" name="weight"></input>
+                                                <input class="form-control" id="weight" name="weight" disabled></input>
                                                 <span id="error_weight" class="text-danger"></span>                                      
                                             </div>
       </div>
