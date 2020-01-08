@@ -34,7 +34,7 @@ include 'config.php';
 
     if(mysqli_query($conn,$sql)){
         echo '<script>
-        alert("ส่งคำขอเพิ่มกิจกรรมสำเร็จ ตรวจสอบคำร้องได้ที่เมนู \'ตรวจสอบคำร้อง]\'")
+        alert("ส่งคำขอเพิ่มกิจกรรมสำเร็จ ตรวจสอบคำร้องได้ที่เมนู \'ตรวจสอบคำร้อง\'")
         window.location.href="index-it.php"
         </script>';
     }else{
