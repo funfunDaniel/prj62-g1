@@ -43,14 +43,14 @@
     }
     move_uploaded_file($_FILES['actfile']['tmp_name'],"C:/xampp/htdocs/prj62_g1/it-website/import-files/files/" . $file );
     move_uploaded_file($_FILES['actpic']['tmp_name'],"C:/xampp/htdocs/prj62_g1/it-website/import-files/images/" . $pic );
-
+    
+    // move_uploaded_file($_FILES['actfile']['tmp_name'],"../import-files/files/" . $file );
+    // move_uploaded_file($_FILES['actpic']['tmp_name'],"../import-files/images/" . $pic );
     
     $sql = "INSERT INTO `activity_new`(`name`, `date`, `detail`, `file`, `image`, `timestamp`, `prof_id`, `dep_id`) 
     VALUES ('".$name."','".$date."','".$detail."','".$file."','".$pic."','".$timestamp."','".$_SESSION['id']."','".$type."')";
     if(mysqli_query($conn,$sql))
         {
-            // echo "<script>alert('เพิ่มกิจกรรมสำเร็จ เข้าสู่ขั้นตอนการเพิ่มน้ำหนักทักษะ');
-            //   window.location.href='prof-weight-skill.php'</script>";
             $sql_select_id = 'SELECT `id` FROM `activity_new` WHERE `name` = "'.$name.'"';
             $result = mysqli_query($conn,$sql_select_id);
             if(mysqli_num_rows($result) > 0){

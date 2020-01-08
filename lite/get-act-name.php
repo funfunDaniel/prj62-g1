@@ -5,13 +5,20 @@
 
 <body>
 <?php
-$q = $_GET['q'];
+if(isset($_GET['q'])){
+    $q = $_GET['q'];
+    
+}else{
+    
+    $q = 1;
+}
 // $q = $_POST["q"];
-echo "<script>console.log(".$q.")</script>";
+// echo "<script>console.log(".$q.")</script>";
 include('config.php');
 
 
-$sql = "SELECT * FROM `activity` WHERE `type` = '".$q."'";
+$sql = "SELECT * FROM `activity_new` WHERE `dep_id` = '".$q."'";
+// $sql = "SELECT * FROM `activity` WHERE `type` = '".$q."'";
 $result = mysqli_query($conn,$sql);
 
 if (mysqli_num_rows($result) > 0){

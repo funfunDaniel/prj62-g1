@@ -114,12 +114,39 @@ function checkType(type){
                                         <form name="searchForm" method="POST" id="add-act-form" action="check-std-add-activity.php" enctype="multipart/form-data">
                                         <div class="form-group" id="actype">
                                             <span class="input-group-prepend" id="inputGroupPrepend">ประเภทของกิจกรรม</span><br/>
-                                            <select  class="selectborder " name="activitytype" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px;border-color:#2E9AFE;" onchange="checkType(this.value)" > 
-                                                <option value="none">----- เลือกประเภทกิจกรรม -----</option>
-                                                <option value="university">มหาวิทยาลัย</option>
-                                                <option value="school">สำนักวิชา</option>
-                                                <option value="other">หน่วยงานภายนอก</option>
-                                            </select>
+                                            <?php 
+                                            include 'config.php';
+                                            // $id = $_SESSION['id'];
+                                            $sql = "SELECT * FROM `department`";
+                                            $result = mysqli_query($conn,$sql);
+                                            if (mysqli_num_rows($result) > 0)
+                                            {
+                                                echo '<select  class="selectborder " name="activitytype" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px;border-color:#2E9AFE;" onchange="checkType(this.value)" >';
+                                                while($row = mysqli_fetch_array($result))
+                                                {
+                                                    echo '<option id="item-dep" value="'.$row['id'].'">'.$row['department'].'</option>';
+                                                }
+                                                echo '</select>';
+                                            }
+                                            else
+                                            {
+                                                echo '<select class="form-control" > 
+                                                        <option value="no-dep">ไม่มีหน่วยงานในฐานข้อมูล</option>
+                                                      </select>';
+                                            }
+
+                                            // if(mysqli_query($conn,$sql)){
+                                            //     echo '<select  class="selectborder " name="activitytype" style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px;border-color:#2E9AFE;" onchange="checkType(this.value)" > 
+                                            //         <option value="none">----- เลือกประเภทกิจกรรม -----</option>
+                                            //         <option value="university">มหาวิทยาลัย</option>
+                                            //         <option value="school">สำนักวิชา</option>
+                                            //         <option value="other">หน่วยงานภายนอก</option>
+                                            //     </select>';
+
+                                            // }else{
+                                                
+                                            // }
+                                            ?>
                                         </div>
 
                                         <div class="form-group" id="activityname">
@@ -148,29 +175,7 @@ function checkType(type){
                                                 <input name="location_long" id="geo_data_long" type="text" class="form-control " style="width:60%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;">                                        
                                             </div>
                                         </div>
-                                    <!-- </div>
-                                        <div class="form-group">
-                                            <label for="exampleFormControlTextarea1">ตำแหน่งปัจจุบัน</label><br/>
-                                            <div class="lat-long-input">
-                                                <div class="lat-input-group">
-                                                    <div class="lat-labal">
-                                                        ละติจูด : 
-                                                    </div>
-                                                    <div class="lat-input">
-                                                        <input name="location_lat" id="geo_data_lat" type="text" class="form-control " style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;">                                        
-                                                    </div>
-                                                </div>
-                                                <div class="long-input-group">
-                                                    <div class="long-labal">
-                                                        ลองติจูด : 
-                                                    </div>
-                                                    <div class="long-input">
-                                                        <input name="location_long" id="geo_data_long" type="text" class="form-control " style="width: 100%;height: 40px;margin-top: 5px;margin-bottom: 5px; border-color:#2E9AFE;">                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div> -->
+                                    
 
                                         <!-- ดึงข้อมูลตำแหน่งปัจจุบัน -->
                                         <script type="text/javascript">

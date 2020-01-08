@@ -27,6 +27,7 @@ include 'config.php';
         // echo 'Don t have image';
     }
     move_uploaded_file($_FILES['image']['tmp_name'],"C:/xampp/htdocs/prj62_g1/it-website/import-files/images/" . $picture );
+    // move_uploaded_file($_FILES['image']['tmp_name'],"../import-files/images/" . $picture );
 
     $sql = "INSERT INTO `portfolio`(`image`, `description`, `location_lat`, `location_long`, `timestamp`, `status_id`, `std_id`, `act_id`) 
     VALUES ('".$picture."','".$datail."','".$lat."','".$long."','".$timestamp."',2,'".$std_id."','".$name."')";
