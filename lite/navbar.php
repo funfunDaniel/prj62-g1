@@ -105,7 +105,7 @@
                 </ul> 
                 </li>
                 <li>
-                    <a href=\"#\" class=\"w3-bar-item w3-button\">
+                    <a href=\"std-check-request.php\" class=\"w3-bar-item w3-button\">
                     <font style=\"font-size:14px\">ตรวจสอบคำขอ</font></a>
                 </li>
                 <li>
