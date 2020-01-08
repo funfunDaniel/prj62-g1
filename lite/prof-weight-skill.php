@@ -112,6 +112,7 @@
                                                             $("#weight").css('border-color', '');
                                                             weight = $('#weight').val();
                                                             skill = $('#skill option:selected').text();
+                                                            skill_value = $('#skill').val();
 
                                                         }
                                                         if(error_weight != '')
@@ -124,7 +125,7 @@
                                                             {
                                                                 count = count + 1;
                                                                 output = '<tr id="row_'+count+'">';
-                                                                output += '<td>'+skill+'<input type="hidden" name="hidden_skill[]" id="skill'+count+'" class="skill" value="'+skill+'"/></td>';
+                                                                output += '<td>'+skill+'<input type="hidden" id="hidden_skill[]" name="hidden_skill[]" id="skill'+count+'" class="skill" value="'+skill_value+'"/></td>';
                                                                 
                                                                 output += '<td>'+weight+'<input type="hidden" name="hidden_weight[]" id="weight'+count+'" class="weight" value="'+weight+'"/></td>';
                                                                 
@@ -139,7 +140,7 @@
                                                             else
                                                             {
                                                                 var row_id = $('#hidden_row_id').val();
-                                                                output = '<td>'+skill+'<input type="hidden" name="hidden_skill[]" id="skill'+row_id+'" class="skill" value="'+skill+'"/></td>';
+                                                                output = '<td>'+skill+'<input type="hidden" id="hidden_skill[]" name="hidden_skill[]" id="skill'+row_id+'" class="skill" value="'+skill_value+'"/></td>';
                                                                 
                                                                 output += '<td>'+weight+'<input type="hidden" name="hidden_weight[]" id="weight'+row_id+'" value="'+weight+'"/></td>';
                                                                 
@@ -179,6 +180,7 @@
                                                     $('#weight_skill_form').on('submit', function(event){
                                                         // console.log("submit")
                                                         event.preventDefault();
+                                                        // console.log($('#weight_skill_form').serialize());
                                                         var count_data = 0;
                                                         $('.skill').each(function(){
                                                             count_data = count_data + 1;
@@ -186,11 +188,23 @@
                                                         // console.log(count_data)
                                                         if(count_data > 0)
                                                         {
-
+                                                            var form_data = $('#weight_skill_form').serialize();
+                                                            $.ajax({
+                                                                url: './MySQL/professor/weight-skill.php',
+                                                                method: 'POST',
+                                                                data: form_data,
+                                                                // dataType: 'JSON';
+                                                                success: function(data)
+                                                                {
+                                                                    console.log(data);
+                                                                    alert("บันทึกข้อมูลสำเร็จ");
+                                                                }
+                                                            });
                                                         }
                                                         else
                                                         {
-                                                            
+                                                            // $('#action_alert').html('<p>กรุณาเพิ่มทักษะ อย่างน้อย 1 ทักษะ</p>');
+                                                            alert('กรุณาเพิ่มทักษะ อย่างน้อย 1 ทักษะ');
                                                         }
 
 
@@ -201,8 +215,17 @@
                                                 });
                                             </script>
                                             <br />
-                                            <form method="post" id="weight_skill_form">
+                                            <!-- <form method="post" id="weight_skill_form" action="MySQL/professor/weight-skill.php"> -->
+                                            <form method="post" id="weight_skill_form" >
                                                 <div class="table-responsive">
+                                                <?php 
+                                                if(isset($_GET['actid'])){
+                                                    echo '<script>console.log('.$_GET['actid'].')</script>';
+                                                    echo '<input type="hidden" name="hidden_actid" value='.$_GET['actid'].'/>';
+                                                }
+                                                
+                                                ?>
+                                                <!-- <input type="hidden" name="hidden_actid" value=""/> -->
                                                     <table class="table table-striped table-bordered" id="weight_data">
                                                         <tr>
                                                             <th>ชื่อทักษะ</th>

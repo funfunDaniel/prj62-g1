@@ -49,17 +49,17 @@
     VALUES ('".$name."','".$date."','".$detail."','".$file."','".$pic."','".$timestamp."','".$_SESSION['id']."','".$type."')";
     if(mysqli_query($conn,$sql))
         {
-            echo "<script>alert('เพิ่มกิจกรรมสำเร็จ เข้าสู่ขั้นตอนการเพิ่มน้ำหนักทักษะ');
-              window.location.href='prof-weight-skill.php'</script>";
-            // $sql_select_id = 'SELECT `id` FROM `activity_new` WHERE `name` = "'.$name.'"';
-            // $result = mysqli_query($conn,$sql_select_id);
-            // if(mysqli_num_rows($result) > 0){
-            //     while($row = mysqli_fetch_assoc($result))
-            //     {
-            //         echo "<script>alert('เพิ่มกิจกรรมสำเร็จ เข้าสู่ขั้นตอนการเพิ่มน้ำหนักทักษะ');
-            //           window.location.href='prof-weight-skill.php?actid=".$row['id']."'</script>";
-            //     }       
-            // }
+            // echo "<script>alert('เพิ่มกิจกรรมสำเร็จ เข้าสู่ขั้นตอนการเพิ่มน้ำหนักทักษะ');
+            //   window.location.href='prof-weight-skill.php'</script>";
+            $sql_select_id = 'SELECT `id` FROM `activity_new` WHERE `name` = "'.$name.'"';
+            $result = mysqli_query($conn,$sql_select_id);
+            if(mysqli_num_rows($result) > 0){
+                while($row = mysqli_fetch_assoc($result))
+                {
+                    echo "<script>alert('เพิ่มกิจกรรมสำเร็จ เข้าสู่ขั้นตอนการเพิ่มน้ำหนักทักษะ');
+                      window.location.href='prof-weight-skill.php?actid=".$row['id']."'</script>";
+                }       
+            }
         }
         else
         {
