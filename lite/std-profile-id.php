@@ -1,5 +1,7 @@
 <?php 
     session_start();
+    include "config.php";
+    $stdid = $_REQUEST["std_id"];
 ?>
 <html lang="en">
     <head>
@@ -15,7 +17,6 @@
         <link rel="stylesheet" href="./css/stylesheet1.css">
         <link rel="stylesheet" href="./css/stylesheet2.css">
         
-        <script src="showAll.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         
@@ -165,10 +166,10 @@
                                
                             </div>
                             <div class="card">
-                                <table class="table table-borderless"  id="data-table2" style="font-size: 19px;">
-                                                <tr>                                                                                                   
+                            <table class="table table-hover"  id="data-table2" style="font-size: 19px;">
+                                                <tr class="table-info">                                                                                                   
                                                     <td style="width:200px;">
-                                                        วันที่
+                                                        วันที่จัดกิจกรรม
                                                     </td>
                                                     <td>
                                                         ชื่อกิจกรรม
@@ -177,8 +178,11 @@
                                                         หน่วยงาน
                                                     </td>
                                                     <td>
+                                                        สังกัด
+                                                    </td>
+                                                    <!-- <td>
                                                         ทักษะ
-                                                    </td>                                                                                                          
+                                                    </td>                                                                                                           -->
                                                 </tr>
                                                     <tbody id="tbd">
                                                     </tbody>
@@ -192,30 +196,33 @@
                 </div>
         </div>
         <script>
-         $(document).ready(function(){
+        $(document).ready(function(){
             $.ajax({
                 url: './MySQL/student/get-json-resume.php',
-                type: 'get',
+                type: 'post',
+                data: {stdid: <?php if(isset($_GET['std_id'])){echo $_GET['std_id'];} ?>},
                 dataType: 'JSON',
                 success: function(resp){
+                    console.log(resp);
                    
                     var len = resp.length;
                 for(var i=0; i<len; i++){
-                    var actname = resp[i].actname;
+                    var actid = resp[i].actid;
                     var actdate = resp[i].actdate;
-                    var acttype = resp[i].acttype;
-                    var date = actdate.substring(0,4);
-                    var skill = resp[i].skillname;
+                    var actname = resp[i].actname;
+                    var depid = resp[i].depid;
+                    var depname = resp[i].depname;
+                    var affiliation = resp[i].affiliation;
 
 
                    
                     var tr_str = "<tr>" +
                     "<td  style='color:black;'>" + actdate + "</td> " +
                     "<td  style='color:black;width:500px;'>" + actname + "</td> " +
-                    "<td  style='color:black;width:500px;'>" + acttype + "</td> " +
-                    "<td  style='color:black;width:500px;'>" + skill + "</td> " +
+                    "<td  style='color:black;width:500px;'>" + depname + "</td> " +
+                    "<td  style='color:black;width:500px;'>" + affiliation + "</td> " +
                     "</tr>";
-                    console.log('dd',tr_str);
+                    // console.log('dd',tr_str);
                     $("#tbd").append(tr_str);
                 }
                     }
@@ -228,9 +235,11 @@
             function getStudentData(){
             $.ajax({
                 url: './MySQL/student/get-json-profile.php',
-                type: 'get',
+                type: 'post',
+                data: {stdid: <?php if(isset($_GET['std_id'])){echo $_GET['std_id'];} ?>},
                 dataType: 'JSON',
                 success: function(resp){
+                    // console.log(resp);
                     var id = resp.std_id;
                     var name = resp.firstname + " " + resp.lastname;
                     var address = resp.address;
@@ -244,7 +253,7 @@
                     document.getElementById("tel").innerHTML= telephone;
                     document.getElementById("email").innerHTML= email;
 
-                    (image === null) ? 
+                    (image === '') ? 
                     $("#imghtml").html('<img src="../import-files/user-img/priest.png" style="width: 180px;"/>')
                     :
                     $("#imghtml").html('<img src="../import-files/user-img/' + image + '" style="width: 180px;"/>');
@@ -252,64 +261,11 @@
                 }
             });
             }
-
-            $(document).on('click', '.edit-data', function(){
-                $.ajax({
-                url: './MySQL/student/get-json-profile.php',
-                type: 'get',
-                dataType: 'JSON',
-                success: function(resp){
-                    $("#id").val(resp.std_id);
-                    $("#fname").val(resp.firstname );
-                    $("#lname").val(resp.lastname);
-                    $("#addr").val(resp.address);
-                    $("#phone").val(resp.telephone);
-                    $("#mail").val(resp.email);
-                    // $(".custom-file-input").siblings(".custom-file-label").addClass("selected").html(resp.image);
-
-                    $("#myModal").modal('show');
-                    
-                }
-
-
-                });
-            });
-
-            $("#btnUpdate").click(function(){
-                // console.log($("#frmprofile")[0]);
-                // var formData = new FormData($(this)[0]);
-                // formData.append("#frmprofile",$("#mytext2").val());
-                // console.log($("#frmprofile :input").val())
-                // var form = $('#frmprofile')[0];
-                // var data = new FormData(form);
-
-                $.ajax({
-                    type: "POST",
-                    url: "./MySQL/student/edit-profile.php",
-                    enctype: 'multipart/form-data',
-                    data: new FormData($("#frmprofile")[0]),
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    dataType: 'json',
-                    // data: $("#frmprofile").serialize(),
-                    success: function(res){
-                        console.log(res)
-                        if(res.status = 1){
-                            alert('แก้ไขข้อมูลสำเร็จ')
-                            getStudentData();
-                            $('#myModal').modal('hide');
-                        }else{
-                            alert('แก้ไขข้อมูลไม่สำเร็จ กรุณาลองใหม่')
-                        }
-                        // console.log(res)
-                    }
-                });
-
-            })
-
+         
+        
+            
+            
         });
-
         $(".custom-file-input").on("change", function() {
         var fileName = $(this).val().split("\\").pop();
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
