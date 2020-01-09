@@ -1,5 +1,7 @@
 <?php 
     session_start();
+    include "../../config.php";
+    $stdid = $_REQUEST["std_id"];
 ?>
 <html lang="en">
     <head>
@@ -193,86 +195,149 @@
         </div>
         <script>
          $(document).ready(function(){
-            $.ajax({
-                url: './MySQL/student/get-json-resume.php',
-                type: 'get',
-                dataType: 'JSON',
-                success: function(resp){
-                   
-                    var len = resp.length;
-                for(var i=0; i<len; i++){
-                    var actname = resp[i].actname;
-                    var actdate = resp[i].actdate;
-                    var acttype = resp[i].acttype;
-                    var date = actdate.substring(0,4);
-                    var skill = resp[i].skillname;
+            <?php
+                $sql = "SELECT S.firstname AS firstname,S.lastname AS lastname,S.address AS address,S.telephone AS telephone,S.email AS email,S.image AS image,
+                    A.name AS actname,A.date AS actdate,A.type AS acttype,SK.name AS skillname
+                    FROM portfolio P  
+                    LEFT JOIN student S ON P.std_id = S.id 
+                    LEFT JOIN activity A ON P.act_id = A.id
+                    JOIN resume_skill SK ON A.skill_id = SK.id
+                    WHERE P.status_id = 1 AND P.std_id = $stdid";
 
+                $result = mysqli_query($conn,$query);
 
-                   
-                    var tr_str = "<tr>" +
-                    "<td  style='color:black;'>" + actdate + "</td> " +
-                    "<td  style='color:black;width:500px;'>" + actname + "</td> " +
-                    "<td  style='color:black;width:500px;'>" + acttype + "</td> " +
-                    "<td  style='color:black;width:500px;'>" + skill + "</td> " +
-                    "</tr>";
-                    console.log('dd',tr_str);
-                    $("#tbd").append(tr_str);
+                while($row = mysqli_fetch_array($result)){
+                    ?>
+                        var tr_str = "<tr>" +
+                        "<td  style='color:black;'><?php echo $row['actdate'];  ?>" + actdate + "</td> " +
+                        "<td  style='color:black;width:500px;'><?php echo $row['actname'];  ?>" + actname + "</td> " +
+                        "<td  style='color:black;width:500px;'><?php echo $row['acttype'];  ?>" + acttype + "</td> " +
+                        "<td  style='color:black;width:500px;'><?php echo $row['skillname'];  ?>" + skill + "</td> " +
+                        "</tr>";
+                        console.log('dd',tr_str);
+                        $("#tbd").append(tr_str);
+                    <?php
                 }
-                    }
+            ?>
+            // $.ajax({
+            //     url: './MySQL/student/get-json-resume.php',
+            //     type: 'get',
+            //     dataType: 'JSON',
+            //     success: function(resp){
+                   
+            //         var len = resp.length;
+            //     for(var i=0; i<len; i++){
+            //         var actname = resp[i].actname;
+            //         var actdate = resp[i].actdate;
+            //         var acttype = resp[i].acttype;
+            //         var date = actdate.substring(0,4);
+            //         var skill = resp[i].skillname;
 
-                
-            });
+
+                   
+            //         var tr_str = "<tr>" +
+            //         "<td  style='color:black;'>" + actdate + "</td> " +
+            //         "<td  style='color:black;width:500px;'>" + actname + "</td> " +
+            //         "<td  style='color:black;width:500px;'>" + acttype + "</td> " +
+            //         "<td  style='color:black;width:500px;'>" + skill + "</td> " +
+            //         "</tr>";
+            //         console.log('dd',tr_str);
+            //         $("#tbd").append(tr_str);
+            //     }
+            //         }
+            // });
         });
         $(document).ready(function(){
-            getStudentData();
-            function getStudentData(){
-            $.ajax({
-                url: './MySQL/student/get-json-profile.php',
-                type: 'get',
-                dataType: 'JSON',
-                success: function(resp){
-                    var id = resp.std_id;
-                    var name = resp.firstname + " " + resp.lastname;
-                    var address = resp.address;
-                    var telephone = resp.telephone;
-                    var email = resp.email;
-                    var image = resp.image;
+            <?php
+                $sql = "SELECT * FROM student WHERE id = $stdid";
 
-                    document.getElementById("stdid").innerHTML= id;
-                    document.getElementById("name").innerHTML= name;
-                    document.getElementById("address").innerHTML= address;
-                    document.getElementById("tel").innerHTML= telephone;
-                    document.getElementById("email").innerHTML= email;
+                $result = mysqli_query($conn,$query);
 
-                    (image === null) ? 
-                    $("#imghtml").html('<img src="../import-files/user-img/priest.png" style="width: 180px;"/>')
-                    :
-                    $("#imghtml").html('<img src="../import-files/user-img/' + image + '" style="width: 180px;"/>');
+                while($row = mysqli_fetch_array($result)){
+                    ?>
+                        document.getElementById("stdid").innerHTML= <?php echo $row['id']; ?>;
+                        document.getElementById("name").innerHTML= <?php echo $row['firstname'] . ' ' . $row['lastname'];  ?>;
+                        document.getElementById("address").innerHTML= <?php echo $row['address'];  ?>;
+                        document.getElementById("tel").innerHTML= <?php echo $row['telephone'];  ?>;
+                        document.getElementById("email").innerHTML= <?php echo $row['email'];  ?>;
 
+                        (image === null) ? 
+                        $("#imghtml").html('<img src="../import-files/user-img/priest.png" style="width: 180px;"/>')
+                        :
+                        $("#imghtml").html('<img src="../import-files/user-img/<?php echo $row['image'];  ?>" style="width: 180px;"/>');
+                    <?php
                 }
-            });
-            }
+            ?>
+            // getStudentData();
+            // function getStudentData(){
+            //     $.ajax({
+            //         url: './MySQL/student/get-json-profile.php',
+            //         type: 'get',
+            //         data: <?php echo $_REQUEST["std_id"]; ?>,
+            //         dataType: 'JSON',
+            //         success: function(resp){
+            //             var id = resp.std_id;
+            //             var name = resp.firstname + " " + resp.lastname;
+            //             var address = resp.address;
+            //             var telephone = resp.telephone;
+            //             var email = resp.email;
+            //             var image = resp.image;
+
+            //             document.getElementById("stdid").innerHTML= id;
+            //             document.getElementById("name").innerHTML= name;
+            //             document.getElementById("address").innerHTML= address;
+            //             document.getElementById("tel").innerHTML= telephone;
+            //             document.getElementById("email").innerHTML= email;
+
+            //             (image === null) ? 
+            //             $("#imghtml").html('<img src="../import-files/user-img/priest.png" style="width: 180px;"/>')
+            //             :
+            //             $("#imghtml").html('<img src="../import-files/user-img/' + image + '" style="width: 180px;"/>');
+
+            //         }
+                // });
+            // }
 
             $(document).on('click', '.edit-data', function(){
-                $.ajax({
-                url: './MySQL/student/get-json-profile.php',
-                type: 'get',
-                dataType: 'JSON',
-                success: function(resp){
-                    $("#id").val(resp.std_id);
-                    $("#fname").val(resp.firstname );
-                    $("#lname").val(resp.lastname);
-                    $("#addr").val(resp.address);
-                    $("#phone").val(resp.telephone);
-                    $("#mail").val(resp.email);
-                    // $(".custom-file-input").siblings(".custom-file-label").addClass("selected").html(resp.image);
+                <?php
+                $sql = "SELECT * FROM student WHERE id = $stdid";
 
-                    $("#myModal").modal('show');
-                    
+                $result = mysqli_query($conn,$query);
+
+                while($row = mysqli_fetch_array($result)){
+                    ?>
+                        $("#id").val(<?php echo $row['std_id']; ?>);
+                        $("#fname").val(<?php echo $row['firstname']; ?>);
+                        $("#lname").val(<?php echo $row['lastname']; ?>);
+                        $("#addr").val(<?php echo $row['address']; ?>);
+                        $("#phone").val(<?php echo $row['telephone']; ?>);
+                        $("#mail").val(<?php echo $row['email']; ?>);
+                        // $(".custom-file-input").siblings(".custom-file-label").addClass("selected").html(resp.image);
+
+                        $("#myModal").modal('show');
+                    <?php
                 }
+            ?>
+                // $.ajax({
+                // url: './MySQL/student/get-json-profile.php',
+                // type: 'get',
+                // data: <?php echo $_REQUEST["std_id"]; ?>,
+                // dataType: 'JSON',
+                // success: function(resp){
+                //     $("#id").val(resp.std_id);
+                //     $("#fname").val(resp.firstname );
+                //     $("#lname").val(resp.lastname);
+                //     $("#addr").val(resp.address);
+                //     $("#phone").val(resp.telephone);
+                //     $("#mail").val(resp.email);
+                //     // $(".custom-file-input").siblings(".custom-file-label").addClass("selected").html(resp.image);
+
+                //     $("#myModal").modal('show');
+                    
+                // }
 
 
-                });
+                // });
             });
 
             $("#btnUpdate").click(function(){

@@ -34,7 +34,7 @@
         /*จอใหญ่*/
         @media screen and (max-width: 1280px) and (min-width: 960px) {
             .bg{height:40em;}
-                .fullname{color:white; position: absolute;top: 1.2em; left: 2em;  font-size: 22px;}
+                .fullname{color:white; position: absolute;top: 2.4em; left: 3.5em;  font-size: 14px;}
                 .pic{position: absolute;top: 0.5em;left: 21em;width: 7.7em;height: 7.8em;}
                 .education1{position: absolute;top: 11em; left: 3.5em;font-size: 12px;color:black; }
                 .education2{position: absolute;top: 11em; left: 13em;font-size: 12px;color:black; }
@@ -65,7 +65,7 @@
         /*จอกลาง*/      
         @media screen and (max-width: 960px) and (min-width: 587px) {
                 .bg{height:40em;}
-                .fullname{color:white; position: absolute;top: 1.2em; left: 2em;  font-size: 22px;}
+                .fullname{color:white; position: absolute;top: 1.9em; left: 3em;  font-size: 16px;}
                 .pic{position: absolute;top: 0.5em;left: 21em;width: 7.7em;height: 7.8em;}
                 .education1{position: absolute;top: 11em; left: 3.5em;font-size: 12px;color:black; }
                 .education2{position: absolute;top: 11em; left: 13em;font-size: 12px;color:black; }
@@ -109,7 +109,7 @@
         /*จอเล็ก*/
         @media screen and (max-width: 586px) and (min-width: 401px) {
             .bg{height:29em;}
-                .fullname{color:white; position: absolute;top: 1.5em; left: 2.5em;  font-size: 14px;}
+                .fullname{color:white; position: absolute;top: 1.8em; left: 3.5em;  font-size: 12px;}
                 .pic{position: absolute;top: 0.4em;left: 15.5em;width: 5.6em;height:5.7em;}
                 .education1{position: absolute;top: 18em; left: 6.5em;font-size: 5px;color:black; }
                 .education2{position: absolute;top: 18em; left: 16em;font-size: 5px;color:black; }
