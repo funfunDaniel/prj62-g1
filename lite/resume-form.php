@@ -8,7 +8,7 @@
 <html lang="en">
     <head>
         <title>
-            คลังผลงาน | Resume
+            1.คลังผลงาน | Resume
         </title>
             <!-- Tell the browser to be responsive to screen width -->
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,7 +19,6 @@
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-            <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
             <link rel="stylesheet" href="./css/stylesheet1.css">
             <link rel="stylesheet" href="./css/stylesheet2.css">
             <link rel="stylesheet" type="text/css" href="./css/print.css">
@@ -27,6 +26,8 @@
             <script src="showAll.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	    <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"> </script> 
+            <script src= "https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"> </script>
 
         <?php  include('header.php') ?>
        
@@ -65,7 +66,7 @@
                                         <div class="card-top" style="width: 100%; height: 100%; ">
                                             <h3>Resume</h3><hr/>
                                         </div>
-                                        
+                                        <div><p>1.กรุณาลือกรูปแบบ Resume</p></div>
                                         <div class="row">
                                             <div class="col">
 
@@ -90,9 +91,12 @@
                                         <!-- resume container-->  
                                     <div class="container" id="divResume" >        
                                     </div>  
-                                  
+                                    <div class="form-row">  
+                                    <input class="btn btn-warning" style="width:150px" id="btn-Preview-Image" value="Preview" />   
+                                    <a class="btn btn-primary" style="width:150px" id="btn-Convert-Html2Image" href="#"> Download </a> 
+                                    </div>
                                 <div>
-                                    <hr/>
+                                    2.กรอกข้อมูล
                                     <div class="form-row">
                                        
                                     </div>
@@ -178,10 +182,7 @@
                                         </div>  
                                                                     
                                     </div>
-                                    <div class="form-row">  
-                                    <input class="btn btn-warning" style="width:150px" id="btn-Preview-Image" type="button" value="Preview" />   
-                                    <a class="btn btn-primary" style="width:150px" id="btn-Convert-Html2Image" href="#"> Download </a> 
-                                    </div>
+                                   
                                     <div id="previewImage"></div> 
                                      
 
@@ -295,7 +296,9 @@
                 document.getElementById('inputrefmail').value = '';
             }
         </script>        
-        <script src="../assets/jsPDF/examples/js/html2canvas.js"></script>
+       <script src="../assets/jsPDF/examples/js/html2canvas.js"></script> 
+        <script src="https://rawgit.com/dabeng/OrgChart/master/demo/js/jspdf.min.js"></script>
+
         <script> 
             $(document).ready(function() { 
             // Global variable 

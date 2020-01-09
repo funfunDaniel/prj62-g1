@@ -9,13 +9,14 @@ if(isset($_POST["stdid"])) {
     $stdid = $_SESSION['id'];
 }
 $query = "SELECT S.firstname AS firstname,S.lastname AS lastname,S.address AS address,S.telephone AS telephone,S.email AS email,S.image AS image,
-A.id AS actid, A.date AS actdate, A.name AS actname, D.id AS depid, D.department AS depname, D.affiliation AS affiliation, SS.name AS skillname, AW.weight AS skillweight
+A.id AS actid, A.date AS actdate, A.name AS actname, D.id AS depid, D.department AS depname, D.affiliation AS affiliation
+-- , SS.name AS skillname, AW.weight AS skillweight
 FROM portfolio P  
 LEFT JOIN student S ON P.std_id = S.id 
 LEFT JOIN activity_new A ON P.act_id = A.id
 LEFT JOIN department D ON A.dep_id = D.id
-LEFT JOIN activity_weight_skill AW ON A.id = AW.act_id
-LEFT JOIN resume_skill SS ON AW.skill_id = SS.id
+-- LEFT JOIN activity_weight_skill AW ON A.id = AW.act_id
+-- LEFT JOIN resume_skill SS ON AW.skill_id = SS.id
 WHERE P.status_id = 1 AND P.std_id = '".$stdid."'";
 
 
@@ -40,7 +41,7 @@ while($row = mysqli_fetch_array($result)){
     $depid = $row['depid'];
     $depname = $row['depname'];
     $affiliation = $row['affiliation'];
-    $skillname = $row['skillname'];
+    // $skillname = $row['skillname'];
 
     $return_arr[] = array(
             "name" => $name,
@@ -53,8 +54,8 @@ while($row = mysqli_fetch_array($result)){
             "actname" => $actname,
             "depid" => $depid,
             "depname" => $depname,
-            "affiliation" => $affiliation,
-            "skillname" => $skillname
+            "affiliation" => $affiliation
+            // "skillname" => $skillname
                 );
 }
 

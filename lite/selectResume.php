@@ -22,6 +22,7 @@ function showResumebrown()
             } 
     } // end function statechange()
     getJSON();  
+    getJSON3();  
     var url = "resume-brown.php";
 
     xmlHttp.open("GET",url,true);
@@ -41,6 +42,7 @@ function showResumeblue()
             } 
     } // end function statechange()
     getJSON()
+    getJSON3()
     var url = "resume-blue.php";
 
     xmlHttp.open("GET",url,true);
@@ -60,6 +62,7 @@ function showResumepink()
             } 
     } // end function statechange()
     getJSON();
+    getJSON3(); 
     var url = "resume-pink.php";
 
     xmlHttp.open("GET",url,true);
@@ -80,6 +83,7 @@ function showResumered()
             } 
     } // end function statechange()
     getJSON2();
+    getJSON4(); 
     var url = "resume-red.php";
 
     xmlHttp.open("GET",url,true);
@@ -115,17 +119,11 @@ function getJSON(){
                         var actdate = resp[i].actdate;
                         var acttype = resp[i].acttype;
                         var date = actdate.substring(0,4);
-                        var skill = resp[i].skillname;
+                        // var skill = resp[i].skillname;
                         
                         console.log(pix);
                         // var pix = "<img src='../import-files/user-img/" + img + "' style=' position: absolute ;top: 20vw; left: 671vw; width:258vw;'/>"
                         // $("#picprofile").append(pix);
-
-                        var tr_skill = "<tr>" +
-                        "<td  style='color:black;'>" + skill + "</td> " +
-                        "<td  style='position: absolute;color:black;'><i class='material-icons'>fiber_manual_record</i></td> " +
-                        "</tr>";
-                        $("#skill-table tbody").append(tr_skill);
 
                         var tr_str = "<tr>" +
                         "<td  class='td1'>" + date + "</td> " +
@@ -167,16 +165,9 @@ function getJSON2(){
                     var actdate = resp[i].actdate;
                     var acttype = resp[i].acttype;
                     var date = actdate.substring(0,4);
-                    var skill = resp[i].skillname;
             
                     console.log(pix);
                   
-
-                    var tr_skill = "<tr>" +
-                    "<td  style='color:black;'>" + skill + "</td> " +
-                    "<td  style='position: absolute;color:black;width:auto;'><i class='material-icons'>fiber_manual_record</i></td> " +
-                    "</tr>";
-                    $("#skill-table tbody").append(tr_skill);
 
                     var tr_str = "<tr>" +
                     "<td  class='td1'>" + date + "</td> " +
@@ -189,6 +180,59 @@ function getJSON2(){
                 
             });
         });
+}
+function getJSON3(){
+    $(document).ready(function(){
+                $.ajax({
+                    url: './MySQL/student/get-json-skill.php',
+                    type: 'get',
+                    dataType: 'JSON',
+                    success: function(resp){
+                        // console.log('SKILL RESP: ' , resp);
+                        var len = resp.length;
+                    for(var i=0; i<len; i++){
+                        var skill = resp[i].skillname;
+                        var count = parseInt(resp[i].skillweight);
+                        var tr_skill = "<tr>" +
+                        "<td  style='color:black;'>" + skill + "</td> ";
+                        if(count <= 3){
+                        // console.log('less then 3');
+                        tr_skill +="<td  style='position: absolute;color:black;'><i class='material-icons'>fiber_manual_record</i></td>" ;
+                        }else if(count > 3 && count < 6){
+                        tr_skill +="<td  style='position: absolute;color:black;'><i class='material-icons'>fiber_manual_record fiber_manual_record</i></td>" ;
+                        }else{
+                        tr_skill +="<td  style='position: absolute;color:black;'><i class='material-icons'>fiber_manual_record fiber_manual_record fiber_manual_record</i></td>" ;
+                        }
+                        tr_skill +="</tr>";
+                        $("#skill-table tbody").append(tr_skill);
+                    }"<br/>"
+                    // console.log(tr_skill);
+                        }  
+                });
+            });
+    
+}
+function getJSON4(){
+    $(document).ready(function(){
+                $.ajax({
+                    url: './MySQL/student/get-json-skill.php',
+                    type: 'get',
+                    dataType: 'JSON',
+                    success: function(resp){
+                        // console.log('SKILL RESP: ' , resp);
+                        var len = resp.length;
+                    for(var i=0; i<len; i++){
+                        var skill = resp[i].skillname;
+                        var tr_skill = "<tr>" +
+                        "<td  style='color:black;'>" + skill + "</td> " +
+                        "<td  style='position: absolute;color:black;'><i class='material-icons'>fiber_manual_record</i></td> " +
+                        "</tr>";
+                        $("#skill-table tbody").append(tr_skill);
+                    }"<br/>"
+                        }  
+                });
+            });
+    
 }
 
 var path = "http://it2.sut.ac.th/project62_g1/it-website/lite/std-profile-id.php?std_id=<?php echo $_SESSION["id"]; ?>";
