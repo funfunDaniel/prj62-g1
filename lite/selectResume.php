@@ -16,12 +16,13 @@ function showResumebrown()
    {
             if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete")
             { 
+                    getQRcode();
                     var myObj = xmlHttp.responseText;
                     // alert(myObj);
                     document.getElementById("divResume").innerHTML = myObj;        
             } 
     } // end function statechange()
-    getQRcode(); 
+    // getQRcode(); 
     getJSON();  
     getJSON3(); 
     var url = "resume-brown.php";
@@ -32,17 +33,18 @@ function showResumebrown()
 }
 function showResumeblue()
 {
+    
 	createXMLHttpRequest()
 	    xmlHttp.onreadystatechange = function stateChange()
    {
             if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete")
             { 
+                getQRcode2();
                     var myObj = xmlHttp.responseText;
                     // alert(myObj);
                     document.getElementById("divResume").innerHTML = myObj;        
             } 
     } // end function statechange()
-    getQRcode2()
     getJSON()
     getJSON3()
     var url = "resume-blue.php";
@@ -58,12 +60,12 @@ function showResumepink()
    {
             if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete")
             { 
+                getQRcode2();
                     var myObj = xmlHttp.responseText;
                     // alert(myObj);
                     document.getElementById("divResume").innerHTML = myObj;        
             } 
     } // end function statechange()
-    getQRcode2()
     getJSON();
     getJSON3(); 
     var url = "resume-pink.php";
@@ -80,12 +82,12 @@ function showResumered()
    {
             if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete")
             { 
+                getQRcode2();
                     var myObj = xmlHttp.responseText;
                     // alert(myObj);
                     document.getElementById("divResume").innerHTML = myObj;        
             } 
     } // end function statechange()
-    getQRcode2()
     getJSON2();
     getJSON4(); 
     var url = "resume-red.php";
@@ -104,7 +106,7 @@ function getJSON(){
                     success: function(resp){
                         console.log('RESUME RESP: ' , resp);
                         // ข้อมูลส่วนตัว ใช้ getelementbyid ได้เลย
-                        var name = resp[0].name
+                        var name = resp[0].name_en
                         var address = resp[0].address
                         var email = resp[0].email
                         var img = resp[0].image
@@ -152,7 +154,7 @@ function getJSON2(){
                 success: function(resp){
                     console.log('RESUME RESP: ' , resp);
                     // ข้อมูลส่วนตัว ใช้ getelementbyid ได้เลย
-                    var name = resp[0].name
+                    var name = resp[0].name_en
                     var address = resp[0].address
                     var email = resp[0].email
                     var img = resp[0].image
