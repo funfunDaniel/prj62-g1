@@ -6,14 +6,10 @@ header('Content-Type: application/json');
 
 if(!empty($_POST) )
 {
-    // $fname = mysqli_real_escape_string($conn, $_POST["fname"]);
-    // $lname = mysqli_real_escape_string($conn, $_POST["lname"]);
-    // $address = mysqli_real_escape_string($conn, $_POST["addr"]);
-    // $phone = mysqli_real_escape_string($conn, $_POST["phone"]);
-    // $email = mysqli_real_escape_string($conn, $_POST["mail"]);
-    
     $fname = $_POST["fname"];
     $lname = $_POST["lname"];
+    $fname_en = $_POST["fname_en"];
+    $lname_en = $_POST["lname_en"];
     $address = $_POST["addr"];
     $phone = $_POST["phone"];
     $email = $_POST["mail"];
@@ -27,7 +23,7 @@ if(!empty($_POST) )
         WHERE `id`=".$id."";
 
     }else{
-        $sql = "UPDATE `student` SET `firstname`='".$fname."',`lastname`='".$lname."',`address`='".$address."',`telephone`='".$phone."',`email`='".$email."'
+        $sql = "UPDATE `student` SET `firstname`='".$fname."',`lastname`='".$lname."',`address`='".$address."',`telephone`='".$phone."',`email`='".$email."',`firstname_en`='".$fname_en."',`lastname_en`='".$lname_en."'
         WHERE `id`=".$id."";
     }
 
