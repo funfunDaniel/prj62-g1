@@ -21,8 +21,9 @@ function showResumebrown()
                     document.getElementById("divResume").innerHTML = myObj;        
             } 
     } // end function statechange()
+    getQRcode(); 
     getJSON();  
-    getJSON3();  
+    getJSON3(); 
     var url = "resume-brown.php";
 
     xmlHttp.open("GET",url,true);
@@ -41,6 +42,7 @@ function showResumeblue()
                     document.getElementById("divResume").innerHTML = myObj;        
             } 
     } // end function statechange()
+    getQRcode2()
     getJSON()
     getJSON3()
     var url = "resume-blue.php";
@@ -61,6 +63,7 @@ function showResumepink()
                     document.getElementById("divResume").innerHTML = myObj;        
             } 
     } // end function statechange()
+    getQRcode2()
     getJSON();
     getJSON3(); 
     var url = "resume-pink.php";
@@ -82,6 +85,7 @@ function showResumered()
                     document.getElementById("divResume").innerHTML = myObj;        
             } 
     } // end function statechange()
+    getQRcode2()
     getJSON2();
     getJSON4(); 
     var url = "resume-red.php";

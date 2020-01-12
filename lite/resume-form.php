@@ -202,37 +202,37 @@
         
         
 
-        <?php include('selectResume.php') ?>
         <!-- <script src="selectResume.js"></script> -->
 
+        <?php include('selectResume.php') ?>
         <script>
             var resumename
             function clickPreview(txt){
                 if(txt.name == "resume-blue"){	
                     resumename = "resume-blue";
                     showResumeblue();
-                    getQRcode2()
-                    cleartext()
+                    cleartext();
+                    // getQRcode2();
                 }else if(txt.name == "resume-brown"){
                     resumename = "resume-brown";
                     showResumebrown();
-                    getQRcode2()
-                    cleartext()
+                    cleartext();
+                    // getQRcode2();
                 }else if(txt.name == "resume-pink"){
                     resumename = "resume-pink";
                     showResumepink();
-                    getQRcode2()
-                    cleartext()
+                    cleartext();
+                    // getQRcode2();
                 }else if(txt.name == "resume-red"){
                     resumename = "resume-red";
                     showResumered();
-                    getQRcode()
-                    cleartext()
+                    cleartext();
+                    // getQRcode();
                 }else{
                     resumename = "resume-brown";
                     showResumebrown();
-                    getQRcode2()
-                    cleartext()
+                    cleartext();
+                    // getQRcode2();
                 }
             
             }     

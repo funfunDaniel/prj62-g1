@@ -2,15 +2,14 @@
     include "../../config.php";
     if(isset($_POST)){
         $actid = $_POST['hidden_actid'];
-        for($count = 0; $count<count($_POST['hidden_weight']); $count++)
+        for($count = 0; $count<count($_POST['hidden_skill']); $count++)
         {
             
             $data = array(
                 ':act_id' => $actid,
                 ':skill_id' => $_POST['hidden_skill'][$count],
-                ':weight' => $_POST['hidden_weight'][$count]
+                ':weight' => 1
             );
-            // print_r($data);
             
         $matstring = implode(",",$data);
         $sql = "INSERT INTO `activity_weight_skill`(`act_id`, `skill_id`, `weight`) 
