@@ -85,7 +85,8 @@
                                             <div class="modal-body">
                                                 ชื่อกิจกรรม : <label id="modal_actname"></label><br />
                                                 วันที่จัดกิจกรรม : <label id="modal_actdate"></label><br />
-                                                หน่วยงาน : <label id="modal_dep"></label><br />
+                                                รายละเอียด : <label id="modal_detail"></label><br />
+                                                หน่วยงาน: <label id="modal_dep"></label><br />
                                                 สังกัด : <label id="modal_aff"></label><br />
                                                 ไฟล์ที่เกี่ยวข้อง : <span id="modal_file"></span><br />
                                                 รูปภาพ : <div id="modal_image"></div><br />
@@ -190,6 +191,7 @@
             console.log(act_resp[id].image);
             $('#modal_actname').text(act_resp[id].actname);
             $('#modal_actdate').text(act_resp[id].actdate);
+            $('#modal_detail').text(act_resp[id].detail);
             $('#modal_dep').text(act_resp[id].dep);
             $('#modal_aff').text(act_resp[id].aff);
             document.getElementById('modal_file').innerHTML = '<a href="../import-files/files/'+ act_resp[id].file +'" target="_blank">'+ act_resp[id].file +'</a>';
