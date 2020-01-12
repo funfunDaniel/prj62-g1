@@ -10,6 +10,8 @@
         <title>
             1.คลังผลงาน | Resume
         </title>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+            <script type="text/javascript" src="../../test.js"></script>
             <!-- Tell the browser to be responsive to screen width -->
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <!-- Tell the browser to be responsive to screen width -->
@@ -26,16 +28,22 @@
             <script src="showAll.js"></script>
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <script src= "https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"> </script> 
+            <script src= "https://files.codepedia.info/files/uploads/iScripts/html2canvas.js"> </script>
 
         <?php  include('header.php') ?>
+        <style>
+        .text-block {
+            width: 500px;
+            font-family: serif;
+            float:left;
+            text-align:justify;
+        }
+    </style>
        
     </head>
    
     <body class="fix-header fix-sidebar card-no-border logo-center">
-        <!-- <div class="preloader">
-        <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
-        </div> -->
         <?php  include('navbar.php') ?>
         
 
@@ -64,7 +72,7 @@
                                         <div class="card-top" style="width: 100%; height: 100%; ">
                                             <h3>Resume</h3><hr/>
                                         </div>
-                                        <div><p>กรุณาลือกรูปแบบ Resume</p></div>
+                                        <div><p>1.กรุณาลือกรูปแบบ Resume</p></div>
                                         <div class="row">
                                             <div class="col">
 
@@ -90,7 +98,7 @@
                                     <div class="container" id="divResume" >        
                                     </div>  
                                     <div class="form-row">  
-                                    <input class="btn btn-warning" style="width:150px" id="btn-Preview-Image" type="button" value="Preview" />   
+                                    <a class="btn btn-warning" style="width:150px" id="btn-Preview-Image"  value="Preview" >   
                                     <a class="btn btn-primary" style="width:150px" id="btn-Convert-Html2Image" href="#"> Download </a> 
                                     </div>
                                 <div>
@@ -103,45 +111,45 @@
                                             <div class="form-group col-md-6">
                                                 <label for="inputtime1">ช่วงเวลา</label>
                                                 </br>
-                                                <input type="text" class="form-control" style="width:150px" id="inputtime1" onchange="onchangeResume(this)"> 
+                                                <input type="text" class="form-control" style="width:150px" id="inputtime1" onchange="onchangeResume(this)" pattern="[A-Za-z]"> 
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputplace1">สถานที่</label>
-                                                <input type="text" class="form-control" id="inputplace1" onchange="onchangeResume(this)">
+                                                <input type="text" class="form-control" id="inputplace1" onchange="onchangeResume(this)" pattern="[A-Za-z]">
                                             </div>
                                             <div class="form-group col-md-6">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputeducation1">วุฒิการศึกษา</label>
-                                                <input type="text" class="form-control" id="inputeducation1" onchange="onchangeResume(this)">
+                                                <input type="text" class="form-control" id="inputeducation1" onchange="onchangeResume(this)" pattern="[A-Za-z]">
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputtime2">ช่วงเวลา</label>
                                                 </br>
-                                                <input type="text" class="form-control" style="width:150px" id="inputtime2" onchange="onchangeResume(this)">
+                                                <input type="text" class="form-control" style="width:150px" id="inputtime2" onchange="onchangeResume(this)" pattern="[A-Za-z]">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputplace2">สถานที่</label>
-                                                <input type="text" class="form-control" id="inputplace2" onchange="onchangeResume(this)">
+                                                <input type="text" class="form-control" id="inputplace2" onchange="onchangeResume(this)" pattern="[A-Za-z]">
                                             </div>
                                             <div class="form-group col-md-6">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputeducation2">วุฒิการศึกษา</label>
-                                                <input type="text" class="form-control" id="inputeducation2" onchange="onchangeResume(this)">
+                                                <input type="text" class="form-control" id="inputeducation2" onchange="onchangeResume(this)" pattern="[A-Za-z]">
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="inputtime3">ช่วงเวลา</label>
                                                 </br>
-                                                <input type="text" class="form-control" style="width:150px" id="inputtime3" onchange="onchangeResume(this)"> 
+                                                <input type="text" class="form-control" style="width:150px" id="inputtime3" onchange="onchangeResume(this)" pattern="[A-Za-z]"> 
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label for="inputplace3">สถานที่</label>
-                                                <input type="text" class="form-control" id="inputplace3" onchange="onchangeResume(this)">
+                                                <input type="text" class="form-control" id="inputplace3" onchange="onchangeResume(this)" pattern="[A-Za-z]">
                                             </div>
                                             <div class="form-group col-md-6">
                                             </div>
@@ -170,18 +178,20 @@
                                         </div>  
                                         <div class="form-group col-md-6">
                                             <label for="inputreftel">หมายเลขโทรศัพท์</label>
-                                            <input type="text" class="form-control" id="inputreftel" onchange="onchangeResume(this)">
+                                            <input type="text" class="form-control" id="inputreftel" onchange="onchangeResume(this)" onblur="checkText();">
                                         </div>                             
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="inputrefmail">อีเมล์</label>
-                                            <input type="text" class="form-control" id="inputrefmail" onchange="onchangeResume(this)">
+                                            <input type="text" class="form-control" id="inputrefmail" onchange="onchangeResume(this)" onblur="checkText();">
                                         </div>  
                                                                     
                                     </div>
                                    
-                                    <div id="previewImage"></div> 
+                                    <div id="previewImage" class="text-block">
+                                    
+                                    </div> 
                                      
 
                                    
@@ -209,22 +219,18 @@
                 if(txt.name == "resume-blue"){	
                     resumename = "resume-blue";
                     showResumeblue();
-                    getQRcode2()
                     cleartext()
                 }else if(txt.name == "resume-brown"){
                     resumename = "resume-brown";
                     showResumebrown();
-                    getQRcode2()
                     cleartext()
                 }else if(txt.name == "resume-pink"){
                     resumename = "resume-pink";
                     showResumepink();
-                    getQRcode2()
                     cleartext()
                 }else if(txt.name == "resume-red"){
                     resumename = "resume-red";
                     showResumered();
-                    getQRcode()
                     cleartext()
                 }else{
                     resumename = "resume-brown";
@@ -295,12 +301,14 @@
             }
         </script>        
         <script src="../assets/jsPDF/examples/js/html2canvas.js"></script>
+        <script src="https://rawgit.com/dabeng/OrgChart/master/demo/js/jspdf.min.js"></script>
         <script> 
             $(document).ready(function() { 
             // Global variable 
             var element = $("#divResume");      
             // Global variable 
             var getCanvas;  
+        
             $("#btn-Preview-Image").on('click', function() { 
                 html2canvas(element, { 
                     onrendered: function(canvas) { 
@@ -324,6 +332,17 @@
                 }); 
             }); 
         </script> 
+        <script type="text/javascript">
+            function checkText()
+            {
+                var elem = document.getElementById('inputrefmail','inputreftel').value;
+                if(!elem.match(/^([a-z0-9\_])+$/i))
+                {
+                    alert("กรอกได้เฉพาะ a-Z, A-Z, 0-9");
+                    document.getElementById('inputrefmail').value = "";
+                }
+            }
+        </script>
 
         <?php include('footer.php')?>
         <?php include('import-javascript.php')?>

@@ -77,11 +77,9 @@
 			}else{
 				include 'profile-form-content.php';
             }
-
             if(isset($_REQUEST["ext"])){
                 echo "<script type='text/javascript'>alert('File Name : is already exists!')</script>";
             }
-
             if(isset($_REQUEST["alert"])){
                 echo "<script type='text/javascript'>alert('Inserted successfully!')</script>";
             }
@@ -98,5 +96,4 @@
     <?php include('import-javascript.php')?>
     <script src="js/index.js"></script>
 </body>
-
 </html>
