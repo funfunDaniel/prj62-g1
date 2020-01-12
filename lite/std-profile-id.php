@@ -29,10 +29,6 @@
     </head>
 
     <body class="fix-header fix-sidebar card-no-border logo-center">
-        <!-- <div class="preloader">
-        <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
-        </div> -->
         <?php  include('navbar.php') ?>
 
         <div class="card-block">
@@ -75,22 +71,22 @@
                                                                 <td id="stdid" style="width: 40%;"></td>
                                                             </tr>
                                                             <tr>
-                                                                <!-- <td style="height:50px;">Mary</td> -->
                                                                 <td>ชื่อ - นามสกุล</td>
                                                                 <td id="name"></td>
                                                             </tr>
                                                             <tr>
-                                                                <!-- <td style="height:50px;">July</td> -->
+                                                                <td>ชื่อ - นามสกุล(ภาษาอังกฤษ)</td>
+                                                                <td id="name_en"></td>
+                                                            </tr>
+                                                            <tr>
                                                                 <td>ที่อยู่</td>
                                                                 <td id="address"></td>
                                                             </tr>
                                                             <tr>
-                                                                <!-- <td style="height:50px;"></td> -->
                                                                 <td>หมายเลขโทรศัพท์</td>
                                                                 <td id="tel"></td>
                                                             </tr>
                                                             <tr>
-                                                                <!-- <td style="height:50px;"></td> -->
                                                                 <td>อีเมล์</td>
                                                                 <td id="email"></td>
                                                             </tr>                                                      
@@ -100,66 +96,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-
-
-                                        <!-- The Modal -->
-                                        <div class="modal fade" id="myModal">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-
-                                            <!-- Modal Header -->
-                                            <div class="modal-header">
-                                                <h4 class="modal-title">แก้ไขข้อมูลส่วนตัว</h4>
-                                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            </div>
-
-                                            <!-- Modal body -->
                                         
-                                        <div class="modal-body">
-                                            <form name="frmprofile" id="frmprofile" enctype="multipart/form-data">
-                                                <div class="form-group">
-                                                    <label for="usr">รหัสนักศึกษา:</label>
-                                                    <input type="text" class="form-control" id="id" name="id">
-                                                </div>                                
-                                                <div class="form-group">
-                                                    <label for="usr">ชื่อ:</label>
-                                                    <input type="text" class="form-control" id="fname" name="fname">
-                                                </div>                                
-                                                <div class="form-group">
-                                                    <label for="usr">นามสกุล:</label>
-                                                    <input type="text" class="form-control" id="lname" name="lname">
-                                                </div>                                
-                                                <div class="form-group">
-                                                    <label for="usr">ที่อยู่:</label>
-                                                    <input type="text" class="form-control" id="addr" name="addr">
-                                                </div>                                
-                                                <div class="form-group">
-                                                    <label for="usr">หมายเลขโทรศัพท์:</label>
-                                                    <input type="text" class="form-control" id="phone" name="phone">
-                                                </div>                                
-                                                <div class="form-group">
-                                                    <label for="usr">อีเมล์:</label>
-                                                    <input type="text" class="form-control" id="mail" name="mail">
-                                                </div> 
-                                                <div class="custom-file form-group">
-                                                    <label for="comment">รูปภาพ(ถ้ามี)</label>
-                                                    <input type="file" class="form-control" id="inputfile" accept="image/*" style="width:467px;" id="actpic" name="actpic">
-
-                                                    <!-- <input type="file" id="actpic" name="actpic" accept="image/*" class="custom-file-input" id="customFile">
-                                                    <label class="custom-file-label" for="customFile">Choose file</label> -->
-                                                </div>                           
-                                            </form>
-                                        </div>
-
-                                            <!-- Modal footer -->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-info" id="btnUpdate">บันทึกข้อมูล</button>
-                                                <button type="button" class="btn btn-danger" data-dismiss="modal">ปิดหน้าต่าง</button>
-                                            </div>
-
-                                            </div>
-                                        </div>
-                                        </div>
                                     <!-- end class="card-body" -->
                                     </div>
                                     
@@ -167,27 +104,26 @@
                             </div>
                             <div class="card">
                             <table class="table table-hover"  id="data-table2" style="font-size: 19px;">
-                                                <tr class="table-info">                                                                                                   
-                                                    <td style="width:200px;">
-                                                        วันที่จัดกิจกรรม
-                                                    </td>
-                                                    <td>
-                                                        ชื่อกิจกรรม
-                                                    </td>
-                                                    <td>
-                                                        หน่วยงาน
-                                                    </td>
-                                                    <td>
-                                                        สังกัด
-                                                    </td>
-                                                    <!-- <td>
-                                                        ทักษะ
-                                                    </td>                                                                                                           -->
-                                                </tr>
-                                                    <tbody id="tbd">
-                                                    </tbody>
-               
-                                </table>
+                                    <tr class="table-info">
+                                        <td style="width:50px;">
+                                            #
+                                        </td>                                                                                                   
+                                        <td style="width:200px;">
+                                            วันที่จัดกิจกรรม
+                                        </td>
+                                        <td>
+                                            ชื่อกิจกรรม
+                                        </td>
+                                        <td>
+                                            หน่วยงาน
+                                        </td>
+                                        <td>
+                                            สังกัด
+                                        </td>
+                                    </tr>
+                                        <tbody id="tbd">
+                                        </tbody>
+                            </table>
                                
                             </div>
                         </div>
@@ -203,8 +139,6 @@
                 data: {stdid: <?php if(isset($_GET['std_id'])){echo $_GET['std_id'];} ?>},
                 dataType: 'JSON',
                 success: function(resp){
-                    console.log(resp);
-                   
                     var len = resp.length;
                 for(var i=0; i<len; i++){
                     var actid = resp[i].actid;
@@ -217,12 +151,12 @@
 
                    
                     var tr_str = "<tr>" +
+                    "<td  style='color:black;'>" + (i+1) + "</td> " +
                     "<td  style='color:black;'>" + actdate + "</td> " +
                     "<td  style='color:black;width:500px;'>" + actname + "</td> " +
                     "<td  style='color:black;width:500px;'>" + depname + "</td> " +
                     "<td  style='color:black;width:500px;'>" + affiliation + "</td> " +
                     "</tr>";
-                    // console.log('dd',tr_str);
                     $("#tbd").append(tr_str);
                 }
                     }
@@ -239,9 +173,9 @@
                 data: {stdid: <?php if(isset($_GET['std_id'])){echo $_GET['std_id'];} ?>},
                 dataType: 'JSON',
                 success: function(resp){
-                    // console.log(resp);
                     var id = resp.std_id;
                     var name = resp.firstname + " " + resp.lastname;
+                    var name_en = resp.firstname_EN + " " + resp.lastname_EN;
                     var address = resp.address;
                     var telephone = resp.telephone;
                     var email = resp.email;
@@ -249,6 +183,7 @@
 
                     document.getElementById("stdid").innerHTML= id;
                     document.getElementById("name").innerHTML= name;
+                    document.getElementById("name_en").innerHTML= name_en;
                     document.getElementById("address").innerHTML= address;
                     document.getElementById("tel").innerHTML= telephone;
                     document.getElementById("email").innerHTML= email;
@@ -261,14 +196,6 @@
                 }
             });
             }
-         
-        
-            
-            
-        });
-        $(".custom-file-input").on("change", function() {
-        var fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
         });
         </script>
         <?php include('footer.php')?>
