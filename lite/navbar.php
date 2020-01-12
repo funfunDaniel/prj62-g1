@@ -71,7 +71,12 @@
 					    <li><a href=\"prof-add-activity-form.php\" > กิจกรรมนักศึกษา </a></li>
                     </ul> 
                     </li>
-					<li><a href=\"record-manage.php\" class=\"w3-bar-item w3-button\"><font style=\"font-size:14px\">ระเบียนคลังข้อมูล</font></a></li>
+                    <li><a href=\"#\" class=\"w3-bar-item w3-button\"><font style=\"font-size:14px\">ระเบียนคลังข้อมูล</font></a>
+                        <ul>
+                            <li><a href=\"prof-all-activity.php\" > กิจกรรมนักศึกษา </a></li>
+                            <li><a href=\"record-manage.php\" > แบบฟอร์ม/โครงงาน </a></li>
+                        </ul>
+                    </li>
 					<li><a href=\"#\" class=\"w3-bar-item w3-button\"><font style=\"font-size:14px\">คำร้องขอ</font></a>
 						<ul>
 							<li><a href=\"prof-Request-activity.php\" > กิจกรรมนักศึกษา </a></li>
